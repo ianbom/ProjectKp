@@ -24,14 +24,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-
-
-
-
         if (request()->ajax()) {
             $query = Client::query();
-
-
+            
             // $query = DB::table('clients')->get();
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {

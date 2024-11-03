@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ImageTask;
+use App\Models\ProgressTask;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
@@ -18,25 +19,49 @@ class TaskController extends Controller
     }
 
     public function dataTask() {
-        $data = Task::with(['user', 'projects'])  // Gunakan eager loading
-            ->select('task.*')  // Pilih semua kolom dari tabel task
+        $data = Task::with(['user', 'projects'])
+            ->select('task.*')
             ->join('users', 'task.id', '=', 'users.id')
-            ->join('projects', 'task.id_projects', '=', 'projects.id', 'left')  // Left join karena id_projects bisa null
+            ->leftJoin('projects', 'task.id_projects', '=', 'projects.id')
             ->get();
 
         return DataTables::of($data)
             ->addColumn('user_name', function ($data) {
-                return $data->user->name;  // Ambil nama user
+                return $data->user->name;
             })
             ->addColumn('project_name', function ($data) {
-                return $data->projects ? $data->projects->name : 'No Project';  // Ambil nama project atau 'No Project' jika null
+                return $data->projects ? $data->projects->name : 'No Project';
             })
-            ->addColumn('action', function ($data){
-                return '<a href="#" class="btn btn-sm btn-warning">Edit</a>';
+            ->addColumn('action', function ($data) {
+                $deleteUrl = route('task.delete', $data->id_task);
+                $editUrl = route('task.edit', $data->id_task);
+                $detailUrl = route('task.detail', $data->id_task);
+
+                return '
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="' . $detailUrl . '">Detail</a></li>
+                            <li><a class="dropdown-item" href="' . $editUrl . '">Edit</a></li>
+                            <li>
+                                <form action="' . $deleteUrl . '" method="POST" onsubmit="return confirm(\'Are you sure you want to delete this task?\');" style="display:inline;">
+                                    ' . csrf_field() . '
+                                    ' . method_field('DELETE') . '
+                                    <button type="submit" class="dropdown-item text-danger">Delete</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                ';
             })
             ->rawColumns(['action'])
             ->make(true);
     }
+
+
+
 
 
     public function create(){
@@ -49,12 +74,6 @@ class TaskController extends Controller
     public function store(Request $request)
 {
     try {
-
-        // if ($request->hasFile('image')) {
-        //     dd($request->file('image')); // Hentikan proses dan tampilkan isi array file
-        // } else {
-        //     dd('No images uploaded');
-        // }
 
         $request->validate([
             'id_projects' => 'nullable',
@@ -73,15 +92,15 @@ class TaskController extends Controller
             'description' => $request->description,
         ]);
 
-        // Cek apakah ada gambar yang diunggah
+
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $image) {
-                // Simpan gambar ke direktori
-                $imagePath = $image->store('tasks', 'public'); // Menyimpan gambar di storage/app/public/images/tasks
 
-                // Simpan informasi gambar ke tabel 'task_image'
+                $imagePath = $image->store('tasks', 'public');
+
+
                 ImageTask::create([
-                    'id_task' => $task->id_task, // Hubungkan dengan task yang baru dibuat
+                    'id_task' => $task->id_task,
                     'image' => $imagePath,
                 ]);
             }
@@ -96,27 +115,32 @@ class TaskController extends Controller
 }
 
     public function edit($id){
-        $task = Task::findOrFail($id);
-        return view('pages.admin.task.edit_task', ['task' => $task]);
+        $task = Task::with('projects')->findOrFail($id);
+        $projects = Project::all();
+        $user = User::all();
+        //  return response()->json(['task' => $task]);
+        return view('pages.admin.task.edit_task', ['task' => $task, 'projects' => $projects, 'user' => $user]);
     }
+
+
 
     public function update(Request $request, $id_task)
 {
     try {
-        // Validasi input
+
         $request->validate([
             'id_projects' => 'nullable',
             'id' => 'required',
             'title' => 'required|string',
             'description' => 'required|string',
-            'image' => 'sometimes|array', // File bersifat opsional
+            'image' => 'sometimes|array',
             'image.*' => 'file|mimes:jpeg,png,jpg,pdf'
         ]);
 
-        // Cari task berdasarkan ID
+
         $task = Task::findOrFail($id_task);
 
-        // Update data task
+
         $task->update([
             'id_projects' => $request->id_projects,
             'id' => $request->id,
@@ -124,22 +148,12 @@ class TaskController extends Controller
             'description' => $request->description,
         ]);
 
-        // Cek apakah ada file baru yang diunggah
-        if ($request->hasFile('image')) {
-            // Hapus file lama jika ada
-            foreach ($task->images as $existingImage) {
-                // Hapus file dari storage
-                Storage::disk('public')->delete($existingImage->image);
-                // Hapus dari database
-                $existingImage->delete();
-            }
 
-            // Simpan file baru
+        if ($request->hasFile('image')) {
+
             foreach ($request->file('image') as $image) {
-                // Simpan file ke direktori storage
                 $imagePath = $image->store('tasks', 'public');
 
-                // Simpan informasi gambar ke tabel 'task_image'
                 ImageTask::create([
                     'id_task' => $task->id_task,
                     'image' => $imagePath,
@@ -159,6 +173,34 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $task->delete();
         return redirect()->back()->with('success', 'Success hapus task');
+    }
+
+    public function deleteImage($id){
+        $image = ImageTask::findOrFail($id);
+        $image->delete();
+
+        return redirect()->back()->with('success', 'Image deleted successfully');
+    }
+
+    public function detail($id){
+        $task = Task::findOrFail($id);
+        return view('pages.admin.task.detail_task', ['task' => $task]);
+    }
+
+    public function detailProgress($id){
+        $progress = ProgressTask::findOrFail($id);
+
+        return view('pages.admin.task.edit_progress_task', ['progress' => $progress]);
+    }
+
+    public function updateProgress($id, Request $request){
+        $progress = ProgressTask::findOrFail($id);
+
+        $progress->comment = $request->comment;
+        $progress->status = $request->status;
+        $progress->save();
+
+        return redirect()->back()->with('success', 'Success update progress task');
     }
 
 }

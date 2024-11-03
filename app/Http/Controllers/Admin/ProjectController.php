@@ -151,6 +151,6 @@ class ProjectController extends Controller
     {
         File::delete(public_path('storage/' . $project->photo));
         $project->delete();
-        return redirect()->route('client.project.index', $project->clients_id);
+        return redirect()->back()->with('success', 'Project deleted successfully');
     }
 }

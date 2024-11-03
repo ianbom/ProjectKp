@@ -21,5 +21,6 @@ class Project extends Model
         'photo',
     ];
 
+
     protected $hidden = [];
 }

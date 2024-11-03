@@ -20,7 +20,7 @@ class ProgressTask extends Model
         return $this->belongsTo(User::class, 'id', 'id');
     }
 
-    public function imageTask(){
+    public function imageProgress(){
         return $this->hasMany(ImageTask::class, 'id_progress_task', 'id_progress_task');
     }
 }

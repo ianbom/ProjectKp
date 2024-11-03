@@ -18,7 +18,26 @@ class DashboardController extends Controller
         $project = Project::count();
 
         $recentclient = Client::latest()->take(5)->get();
-        $recentnoti = DB::table('comments')->join('clients', 'comments.commentable_id', '=', 'clients.id')->select('comments.*', 'clients.id', 'clients.name', 'clients.slug', 'clients.password')->where('comments.deleted_at', NULL)->where('comments.commenter_id', NULL)->latest('comments.created_at')->take(5)->get();
+       // $recentnoti = DB::table('comments')->join('clients', 'comments.commentable_id', '=', 'clients.id')->select('comments.*', 'clients.id', 'clients.name', 'clients.slug', 'clients.password')->where('comments.deleted_at', NULL)->where('comments.commenter_id', NULL)->latest('comments.created_at')->take(5)->get();
+
+       $recentnoti = DB::table('comments')
+       ->join('clients', 'comments.commentable_id', '=', 'clients.id')
+       ->join('projects', 'clients.id', '=', 'projects.clients_id')
+       ->select(
+           'comments.comment',
+           'clients.id as client_id',
+           'clients.name as guest_name',
+           'projects.id as project_id',
+           'projects.name as name',
+           'clients.slug as slug',
+           'comments.created_at as created_at'
+       )
+       ->where('comments.commentable_type', 'App\\Models\\Client') // Pastikan namespace sesuai
+       ->whereNull('comments.deleted_at')
+       ->latest('comments.created_at')
+       ->take(5)
+       ->get();
+
         return view('pages.admin.dashboard', [
             'admin' => $admin,
             'client' => $client,
@@ -27,5 +46,11 @@ class DashboardController extends Controller
             'recentnoti' => $recentnoti,
 
         ]);
+
+        // return response()->json([  'admin' => $admin,
+        // 'client' => $client,
+        // 'project' => $project,
+        // 'recentclient' => $recentclient,
+        // 'recentnoti' => $recentnoti,]);
     }
 }

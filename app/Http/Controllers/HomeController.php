@@ -25,4 +25,8 @@ class HomeController extends Controller
     {
         return view('errors.404');
     }
+
+    public function login(){
+        return view('auth.login');
+    }
 }
