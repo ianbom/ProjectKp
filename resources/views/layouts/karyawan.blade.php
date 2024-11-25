@@ -28,7 +28,7 @@
                         <a href="#!" class="menu-toggle">
                             <img src="/images/dashboard/close.svg" alt="" srcset="" class="menu-logo"></a>
                         <a href="#" class="brand-logo">
-                            <img src="/images/dashboard/logo-webcare.svg" alt="" srcset=""
+                            <img src="/images/dashboard/logo.png" alt="" srcset=""
                                 class="logo-dashboard">
                             <span>
                                 <p class="title-dashboard my-auto" style="color: white;">

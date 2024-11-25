@@ -11,8 +11,8 @@
 </footer> --}}
 
 <footer>
-    <div class="container">
-        <p class="pt-2 pb-2 text-center text-white">
+    <div style="background-color: #0B20E9;">
+        <p class="pt-4 pb-4 text-center text-white" style="font-size: 14px;" >
             {{ date('Y') }} © Copyright Webcare.idn. All Rights Reserved.
         </p>
     </div>

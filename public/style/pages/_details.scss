@@ -12,7 +12,7 @@ $font-subtitle-card: #8e9faf;
 
 .bg-nav {
   background: $secondary-details;
-  
+
   .nav-link {
     svg {
       fill: #8e9faf;
@@ -56,7 +56,7 @@ $font-subtitle-card: #8e9faf;
 
   .radius-client-project {
     position: relative;
-    border-radius: 15px;
+    border-radius: 7px;
 
     &::before {
       content: "";
@@ -66,7 +66,7 @@ $font-subtitle-card: #8e9faf;
       bottom: 0;
       background: #0068ff;
       width: 15px;
-      border-radius: 15px 0 0 15px;
+      border-radius: 7px 0 0 15px;
     }
 
     // adding class svg
@@ -188,7 +188,7 @@ $font-subtitle-card: #8e9faf;
     .radius-client-project {
       &::before {
         width: 15px;
-        border-radius: 15px 0 0 15px;
+        border-radius: 7px 0 0 15px;
       }
     }
   }
@@ -199,7 +199,7 @@ $font-subtitle-card: #8e9faf;
     .radius-client-project {
       &::before {
         width: 5px;
-        border-radius: 15px 0 0 15px;
+        border-radius: 7px 0 0 15px;
       }
     }
   }
@@ -269,7 +269,7 @@ $font-subtitle-card: #8e9faf;
 .p-card-2 {
   width: 29.96%;
   padding: 10px 10px 10px 10px;
-  border-radius: 10px;
+  border-radius: 7px;
   margin-left: 0.4%;
 }
 
@@ -301,7 +301,7 @@ $font-subtitle-card: #8e9faf;
   .p-card-2 {
     width: 100%;
     margin-left: 0px;
-    border-radius: 10px;
+    border-radius: 7px;
   }
 
   .section-1-card-2 {
@@ -459,7 +459,7 @@ $font-subtitle-card: #8e9faf;
     svg {
       fill: #8e9faf;
     }
-    
+
     svg.active {
       fill: #0368fb;
     }
@@ -467,7 +467,7 @@ $font-subtitle-card: #8e9faf;
     a.nav-link {
       font-size: 18px;
     }
-  
+
 
 
 

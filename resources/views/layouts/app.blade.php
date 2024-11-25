@@ -17,15 +17,15 @@
 
 </head>
 
-<body style="  {{ request()->is('details/comments*') ? 'background: #f5f6fb;' : '' }}">
+<body style="  {{ request()->is('details/comments*') ? 'background: #FFFFFFFF;' : '' }}">
 
     {{-- Navbar --}}
     {{-- @include('includes.navbar') --}}
     <!-- Adding Nav Menu -->
-    <nav class="navbar navbar-light d-xl-block d-lg-block d-md-block d-sm-none bg-navbar shadow-lg">
+    <nav class="navbar navbar-light d-lg-block  bg-navbar ">
         <div class="d-flex justify-content-between content-nav">
             <div class="d-flex">
-                <img src="/images/dashboard/logo-webcare.svg" width="40" height="40"
+                <img src="/images/dashboard/logo.png" width="40" height="40"
                     class="d-inline-block align-top" alt="">
                 <a class="navbar-brand font-weight-bold font-nav ml-2" href="#">
                     Portal Client

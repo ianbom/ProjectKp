@@ -46,11 +46,12 @@
     </section> --}}
 
     <section class="bg-main-tutorial pb-4">
-        <div class="bg-tutorials">
-            <div class="container">
-                <p class="my-auto text-white title-tutorial font-weight-bold">Tutorial</p>
+        <div class="d-flex" style="border-radius: 7px; margin: 20px 40px; background-color: #E8F0FE; ">
+            <div class="bg-tutorials">
+                <p class="my-auto title-tutorial font-weight-bold">Tutorial</p>
+                </div>
             </div>
-        </div>
+
         @foreach ($tutorial as $tutorials)
             <div class="d-flex justify-content-center video mt-lg-3 mt-md-3 mt-sm-2">
                 <div class="bg-tutorial">

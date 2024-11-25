@@ -112,7 +112,7 @@
 
         <div class="col-md-6">
             <div class="card shadow border-0 card-important bg-white mb-3 p-0">
-                <div class="card-title p-3" style="background-color: #0560fd; border-radius: 10px 10px 0px 0px;">
+                <div class="card-title p-3" style="background-color: #0560fd; border-radius: 7px 10px 0px 0px;">
                     {{-- <h5 class="m-0 font-weight-bold">Notifications</h5> --}}
                     <div class="container p-0 m-0">
                         <div class="row">
@@ -165,7 +165,7 @@
 
         <div class="col-md-6">
             <div class="card shadow border-0 card-important bg-white mb-3 p-0">
-                <div class="card-title p-3" style="background-color: #0560fd; border-radius: 10px 10px 0px 0px;">
+                <div class="card-title p-3" style="background-color: #0560fd; border-radius: 7px 10px 0px 0px;">
                     {{-- <h5 class="m-0 font-weight-bold">Recent Clients</h5> --}}
                     <div class="container p-0 m-0">
                         <div class="row">

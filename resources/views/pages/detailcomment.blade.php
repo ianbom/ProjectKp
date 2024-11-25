@@ -98,14 +98,17 @@
     </section> --}}
 
     <section class="">
+        <div class="d-flex" style="border-radius: 7px; margin: 20px 40px; background-color: #E8F0FE; ">
         <div class="bg-comments">
-            <div class="container">
-                <p class="my-auto text-dark title-comment font-weight-bold">Comment</p>
+                <p class="my-auto title-comment font-weight-bold">Comment</p>
             </div>
         </div>
 
         <!-- ADDING COMMENT -->
-        <div class="bg-comment container pt-5">
+                <div class="d-flex" style="border-radius: 7px; margin: 20px 40px; background-color: #E8F0FE; ">
+
+
+        <div class=" bg-comment p-5" >
 
             @comments(['model' => $client])
         </div>
