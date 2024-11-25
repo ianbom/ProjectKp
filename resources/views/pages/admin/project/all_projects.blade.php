@@ -3,26 +3,124 @@
 @section('title', 'All Projects')
 
 @section('content')
-<div class="container mt-5">
-    <h1>All Projects</h1>
-    <table class="table table-bordered" id="projects-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Deadline</th>
-                <th>Status</th>
-                <th>Active Until</th>
-                <th>Notes</th>
-                <th>Photo</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-    </table>
-</div>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #CED2FB, #E8E9FF);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .card {
+            background-color: #E8F0FE;
+            border-radius: 7px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            background-color: #FFFFFF;
+        }
+
+        table thead {
+            background-color: #0B20E9;
+            color: #FFFFFF;
+        }
+
+        table tbody tr {
+            background-color: #F5F7FF;
+            color: #0B20E9;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        table tbody tr:hover {
+            background-color: #0B20E9;
+            color: #FFFFFF;
+        }
+
+        th, td {
+            vertical-align: middle;
+            padding: 12px;
+            border: 1px solid #E8E9FF;
+            text-align: center;
+        }
+
+        th {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        .header-container {
+            background: linear-gradient(135deg, #0B20E9, #5D72DA);
+            color: #FFFFFF;
+            border-radius: 10px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            padding: 20px 30px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 0;
+        }
+    </style>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow border-0 p-3">
+                <div class="card-body">
+                    <div class="header-container">
+                        <div class="header-content">
+                            <h1 class="header-title">All Projects</h1>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered" id="projects-table">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Type</th>
+                                    <th class="text-center">Description</th>
+                                    <th class="text-center">Deadline</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Active Until</th>
+                                    <th class="text-center">Notes</th>
+                                    <th class="text-center">Photo</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- Data fetched dynamically --}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
+
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -6,125 +6,154 @@
 
 @section('content')
 
-    {{-- <div class="dashboard-heading">
-                <h2 class="dashboard-title font-weight-bolder">Edit Project</h2>
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-            </div> --}}
+        <div class="card shadow-sm border-0 mb-5"
+            style="border-radius: 7px; background-color: #E8F0FE; transition: transform 0.3s, box-shadow 0.3s;">
+            <div class="card-body p-5">
+                <!-- Judul -->
+                <h2 class="font-weight-bold mb-4 text-center" style="color: #0B20E9;">Edit Project</h2>
 
-
-    <div class="row">
-        <div class="col-md-12">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                <!-- Penjelasan -->
+                <div class="mb-4"
+                    style="color: #4A4A4A; font-size: 14px; line-height: 1.6; border-left: 4px solid #0B20E9; padding-left: 15px;
+                            background-color: #FFFFFF; border-radius: 7px; box-shadow: 0 4px 7px rgba(0, 0, 0, 0.02);">
+                    <p>
+                        Edit informasi project dengan hati-hati. Pastikan data yang diubah akurat dan sesuai kebutuhan.
+                    </p>
                 </div>
-            @endif
-            <div class="card shadow p-3 border-0 mb-5 " style="border-radius: 20px;">
-                <div class="card-body">
-                    <form action="{{ route('project.update', $item->id) }}" method="POST" enctype="multipart/form-data">
 
-                        @method('PUT')
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Nama Project</label>
-                                    <input type="text" name="name" value="{{ $item->name }}" class="form-control"
-                                        required>
+                <!-- Formulir -->
+                <form action="{{ route('project.update', $item->id) }}" method="POST" enctype="multipart/form-data"
+                    style="border: 1px solid #0B20E9; border-radius: 7px; padding: 20px; background-color: #ffffff;">
+                    @method('PUT')
+                    @csrf
 
-                                </div>
-                                <div class="form-group">
-                                    <label>Jenis Project</label>
-                                    <select class="form-control" name="jenis" required>
-                                        <option value="Website Informasi (BASIC)">Website Informasi (BASIC)
-                                        </option>
-                                        <option value="Website Informasi (PRO)">Website Informasi (PRO)</option>
-                                        <option value="Website Bisnis (BASIC)">Website Bisnis (BASIC)
-                                        </option>
-                                        <option value="Website Bisnis (PRO)">Website Bisnis (PRO)</option>
-                                        <option value="Landing Page">Landing Page</option>
-                                        <option value="{{ $item->jenis }}" selected>{{ $item->jenis }}
-                                        </option>
-                                    </select>
-
-                                </div>
-                                <div class="form-group">
-                                    <label>Keterangan</label>
-                                    <textarea type="text" name="keterangan" value="{{ $item->keterangan }}" class="form-control" required>{{ $item->keterangan }}</textarea>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Deadline</label>
-                                    <input type="datetime-local" rows="5" name="deadline"
-                                        value="{{ $item->deadline }}" class="form-control" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Status</label>
-                                    <select class="form-control" name="status" required>
-                                        <option value="On Going">On Going</option>
-                                        <option value="Revision">Revision</option>
-                                        <option value="Completed">Completed</option>
-                                        <option value="{{ $item->status }}" selected disabled>{{ $item->status }}
-                                        </option>
-                                    </select>
-                                </div>
-
-                                {{-- <div class="form-group">
-                                    <label>Progress</label>
-                                    <div class="input-group">
-                                        <input type="number" name="progress" class="form-control" required min="1"
-                                            max="100" value="{{ $item->progress }}">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">%</span>
-                                        </div>
-                                    </div>
-                                </div> --}}
-                                <div class="form-group">
-                                    <label>Masa Aktif</label>
-                                    <input type="datetime-local" name="masaaktif" value="{{ $item->masaaktif }}"
-                                        class="form-control" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Notes</label>
-
-                                    <input type="text" name="notes" value="{{ $item->notes }}" class="form-control"
-                                        required>
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label>Img Project</label>
-                                    <input type="file" name="photo" class="form-control">
-                                    <img src="{{ Storage::url($item->photo) }}" height="250px" width="200"
-                                        style="object-fit: contain;">
-                                </div>
-
-
-                            </div>
+                    <!-- Informasi Project -->
+                    <div class="form-section mb-5">
+                        <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Informasi Project</h5>
+                        <div class="form-group mb-4">
+                            <label for="name" style="font-weight: 600;">Nama Project</label>
+                            <input type="text" name="name" id="name" class="form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
+                                value="{{ $item->name }}" required>
                         </div>
-                        <div class="row">
-                            <div class="col text-right">
-                                <button type="submit" class="btn btn-primary px-5">
-                                    Save
-                                </button>
-                            </div>
+                        <div class="form-group mb-4">
+                            <label for="jenis" style="font-weight: 600;">Jenis Project</label>
+                            <select class="form-control shadow-sm" name="jenis" id="jenis"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
+                                required>
+                                <option value="Website Informasi (BASIC)">Website Informasi (BASIC)</option>
+                                <option value="Website Informasi (PRO)">Website Informasi (PRO)</option>
+                                <option value="Website Bisnis (BASIC)">Website Bisnis (BASIC)</option>
+                                <option value="Website Bisnis (PRO)">Website Bisnis (PRO)</option>
+                                <option value="Landing Page">Landing Page</option>
+                                <option value="{{ $item->jenis }}" selected>{{ $item->jenis }}</option>
+                            </select>
                         </div>
-                    </form>
-                </div>
+                        <div class="form-group mb-4">
+                            <label for="keterangan" style="font-weight: 600;">Keterangan</label>
+                            <textarea type="text" name="keterangan" id="keterangan"
+                                class="form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
+                                required>{{ $item->keterangan }}</textarea>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="deadline" style="font-weight: 600;">Deadline</label>
+                            <input type="datetime-local" name="deadline" id="deadline"
+                                class="form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
+                                value="{{ $item->deadline }}" required>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label for="status" style="font-weight: 600;">Status</label>
+                            <select class="form-control shadow-sm" name="status" id="status"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
+                                required>
+                                <option value="On Going">On Going</option>
+                                <option value="Revision">Revision</option>
+                                <option value="Completed">Completed</option>
+                                <option value="{{ $item->status }}" selected>{{ $item->status }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Gambar Project -->
+                    <div class="form-section mb-5">
+                        <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Gambar Project</h5>
+                        <div class="form-group mb-4">
+                            <label for="photo" style="font-weight: 600;">Foto Project</label>
+                            <input type="file" name="photo" id="photo" class="form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;">
+                            <img src="{{ Storage::url($item->photo) }}" height="250px" width="200"
+                                style="object-fit: contain;">
+                        </div>
+                    </div>
+
+                    <!-- Tombol Simpan -->
+                    <div class="text-right mt-5">
+                        <button type="submit" class="btn px-5 py-2">
+                            Simpan
+                        </button>
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
+</div>
 
-    </div>
+<!-- Efek Hover dan Fokus -->
+<style>
+    .form-control:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
 
-    </div>
-    </div>
+    .form-control:focus {
+        box-shadow: 0 4px 12px rgba(11, 32, 233, 0.2);
+        border-color: #0B20E9;
+    }
+
+    .btn {
+        background-color: #0B20E9;
+        color: #FFFFFF;
+        font-weight: 500;
+        border: none;
+        border-radius: 7px;
+        padding: 10px 20px;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+        transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #E8F0FE;
+        color: #0B20E9;
+        border: 2px solid #0B20E9;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h2::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background-color: #0B20E9;
+        margin: 8px auto 0;
+        border-radius: 2px;
+    }
+</style>
 @endsection
