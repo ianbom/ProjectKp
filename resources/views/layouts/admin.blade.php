@@ -33,13 +33,13 @@
 
                     <a href="{{ route('admin-dashboard') }}"
                         class="mt-3 list-group-item list-group-item-action {{ request()->is('admin') ? 'active' : 'bg-light' }}"
-                        style="border-radius: 10px;">
+                        style="border-radius: 7px;">
 
                         Dashboard
                     </a>
                     <a href="{{ route('client.index') }}"
                         class="mt-3 list-group-item list-group-item-action {{ request()->is('admin/client*') ? 'active' : 'bg-light' }} "
-                        style="border-radius: 10px;">
+                        style="border-radius: 7px;">
 
                         Client
                     </a>
@@ -60,7 +60,7 @@
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"
-                        class="mt-3 list-group-item list-group-item-action bg-light" style="border-radius: 10px;">
+                        class="mt-3 list-group-item list-group-item-action bg-light" style="border-radius: 7px;">
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                             <style>
                                 svg {
@@ -88,7 +88,7 @@
                         <a href="#!" class="menu-toggle">
                             <img src="/images/dashboard/close.svg" alt="" srcset="" class="menu-logo"></a>
                         <a href="#" class="brand-logo">
-                            <img src="/images/dashboard/logo-webcare.svg" alt="" srcset=""
+                            <img src="/images/dashboard/logo.png" alt="" srcset=""
                                 class="logo-dashboard">
                             <span>
                                 <p class="title-dashboard my-auto">

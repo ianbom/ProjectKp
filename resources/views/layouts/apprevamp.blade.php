@@ -30,9 +30,8 @@
 
 
 
-    {{-- Footer --}}
-    @include('includes.footer')
-
+    {{-- Footer @include('includes.footer')--}}
+   
 
     {{-- Script --}}
     @stack('prepend-script')
