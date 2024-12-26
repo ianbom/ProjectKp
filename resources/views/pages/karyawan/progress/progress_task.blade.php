@@ -3,14 +3,115 @@
 @section('title', 'Task Detail')
 
 @section('content')
+<style>
+    body {
+        background: linear-gradient(to bottom right, #CED2FB, #E8E9FF);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+
+    .card {
+        background-color: #E8F0FE; /* Warna background card */
+        border-radius: 7px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+        background-color: #E8F0FE; /* Warna background button */
+        color: #0B20E9; /* Warna font button */
+        font-weight: 500;
+        border: 2px solid #0B20E9;
+        border-radius: 7px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .btn {
+        background-color: #0B20E9; /* Warna hover button */
+        color: #FFFFFF;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    table {
+        border-collapse: separate;
+        border-spacing: 0;
+        border-radius: 7px;
+        background-color: #FFFFFF; /* Warna background tabel */
+    }
+
+    table thead {
+        background-color: #0B20E9; /* Warna background header tabel */
+        color: #FFFFFF; /* Warna font header tabel */
+    }
+
+    table tbody tr {
+        background-color: #F5F7FF; /* Warna background baris */
+        color: #0B20E9; /* Warna font isi tabel */
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    table tbody tr:hover {
+        background-color: #F2F2F2FF; /* Warna background saat hover */
+        color: #818B95; /* Warna font saat hover */
+    }
+
+    th, td {
+        vertical-align: middle;
+        padding: 12px;
+        border: 1px solid #E8E9FF;
+        text-align: center; /* Rata tengah */
+    }
+
+    th {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    td {
+        font-size: 14px;
+    }
+    .custom-table {
+    width: 100%; /* Makes the table span the full width of the container */
+    border-radius: 7px;
+    background-color: #ffffff;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+}
+
+.custom-table th, .custom-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.custom-table th {
+    background-color: #F7F7F7FF;
+    text-align: left;
+    font-weight: bold;
+}
+
+.custom-table td {
+    background-color: #ffffff;
+    text-align: left;
+}
+
+</style>
+
 <div class="container mt-5">
     <div class="card">
-        <div class="card-header">
-            <h4 class="card-title">Detail Task Karyawan</h4>
+        <div class="card-header" style="background-color: #0B20E9; color:#FFFFFF; padding-top:20px;">
+            <h6 class="card-title">Detail Task Karyawan</h6>
         </div>
-        <div class="card-body">
 
-            <h5 class="mt-5 mb-3">Informasi Project</h5>
+        <div class="card-body">
+            <h6 class=" mb-4" style="color: #0B20E9; font-weight:600;">Informasi Project</h6>
 
             @if ($task->projects)
                 <table class="table table-bordered">
@@ -45,16 +146,21 @@
                     <tr>
                         <th>Project Photo</th>
                         <td>
-                            <a href=""> Ini foto project</a>
+                            <a href="#">Lihat Foto Project</a>
                         </td>
                     </tr>
                 </table>
             @else
-                <p>Tugas ini tidak terhubung dengan project dari klien</p>
-            @endif
+            <div style="background-color: #FFFFFF; border-radius: 7px; padding: 15px; ">
+                <p style="margin: 0; color: #0B20E9; font-weight: 400; font-size: 14px;">Tugas ini tidak terhubung dengan project dari klien.</p>
+            </div>
 
-            <h5 class="mb-3">Informasi Task</h5>
-            <table class="table table-bordered">
+
+
+            @endif
+            <h6 class=" mt-5 mb-3" style="color: #0B20E9; font-weight:600;">Informasi Task</h6>
+
+            <table class="custom-table">
                 <tr>
                     <th>Title</th>
                     <td>{{ $task->title }}</td>
@@ -69,16 +175,29 @@
                 </tr>
             </table>
 
-            <h5 class="mt-5 mb-3">Task Images</h5>
-            <div class="row">
+            <h6 class="mt-5 mb-4" style="color: #0B20E9; font-weight:600;">Progress Task</h6>            <div class="row" >
                 @forelse ($task->imageTask as $image)
-                    <img src="{{ Storage::url($image->image) }}" alt="Project Photo" class="img-fluid" width="200">
+                    <div class="col-md-3 mb-4">
+                        <div class="card shadow-sm border-0" style="background-color: #FFFFFF";>
+                            <div class="card-body text-center">
+                                @if (pathinfo($image->image, PATHINFO_EXTENSION) === 'pdf')
+                                    <p class="text-center text-muted">{{ basename($image->image) }}</p>
+                                    <a href="{{ Storage::url($image->image) }}" target="_blank" class="btn btn-outline-primary mt-2">
+                                        <i class="fas fa-file-pdf"></i> Download PDF
+                                    </a>
+                                @else
+                                    <img src="{{ Storage::url($image->image) }}" alt="Task Image" class="img-fluid rounded" style="max-height: 200px; object-fit: cover;">
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 @empty
-                    <p>Tidak ada gambar untuk task ini.</p>
+                    <p class="text-center col-12">Tidak ada gambar untuk task ini.</p>
                 @endforelse
             </div>
 
-            <h5 class="mt-5 mb-3">Progress Task</h5>
+            <h6 class="mt-3 mb-3" style="color: #0B20E9; font-weight:600;">Progress Task</h6>
+
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -99,8 +218,7 @@
                             <td>{{ $progress->comment ?? 'N/A' }}</td>
                             <td>{{ \Carbon\Carbon::parse($progress->created_at)->format('d/m/Y H:i') }}</td>
                             <td>
-                                <a class="btn btn-success" href="{{ route('karyawan.progress.detail', $progress->id_progress_task) }}">Detail</a>
-                                <a class="btn btn-info" href="{{ route('karyawan.progress.edit', $progress->id_progress_task) }}">Edit</a>
+                                <a href="{{ route('karyawan.progress.detail', $progress->id_progress_task) }}" class="btn btn-sm">Detail</a>
                             </td>
                         </tr>
                     @empty
@@ -110,8 +228,6 @@
                     @endforelse
                 </tbody>
             </table>
-
-            <a href="{{ route('karyawan.progress.create', $task->id_task) }}" class="btn btn-success mt-3">Buat Progress</a>
         </div>
     </div>
 </div>

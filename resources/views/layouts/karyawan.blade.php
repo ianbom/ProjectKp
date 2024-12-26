@@ -52,7 +52,7 @@
                             </a>
                         </div>
 
-                        <div>
+                        {{-- <div>
                             <a href="{{ route('karyawan.task.index') }}"
                                 class="dashboard-nav-item  {{ request()->is('karyawan') ? 'active-item' : '' }}">
                                 <svg class="menu-icon menu-icon-normal" xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +64,7 @@
                                     My Project
                                 </p>
                             </a>
-                        </div>
+                        </div> --}}
 
 
 

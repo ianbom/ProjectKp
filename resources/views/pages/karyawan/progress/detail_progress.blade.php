@@ -14,7 +14,7 @@
                 <tr>
                     <th>Deskripsi</th>
                     <td>{{ $progress->deskripsi }}</td>
-                </tr>
+                </tr>g
                 <tr>
                     <th>Status</th>
                     <td>{{ $progress->status }}</td>

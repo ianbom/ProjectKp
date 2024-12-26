@@ -60,7 +60,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->namespace('Admin')->group
     Route::post('/store', [TaskController::class, 'store'])->name('task.store');
     Route::delete('/delete/{id}', [TaskController::class, 'delete'])->name('task.delete');
     Route::get('detail/{id}', [TaskController::class, 'detail'])->name('task.detail');
-    Route::get('detail/progress/{id}', [TaskController::class, 'detailProgress'])->name('task.detail.progress');
+    Route::get('detail/progress/{id}', [TaskController::class, 'detailProgress'])->name(name: 'task.detail.progress');
     Route::put('update/progress/{id}', [TaskController::class, 'updateProgress'])->name('task.detail.update');
     Route::delete('delete/imageTask/{id}', [TaskController::class, 'deleteImage'])->name('image.task.delete');
     });
@@ -84,6 +84,7 @@ Route::prefix('karyawan')->group(function (){
     Route::get('/edit/progress/{id}', [KaryawanController::class, 'editProgress'])->name('karyawan.progress.edit');
     Route::put('/update/progress/{id}', [KaryawanController::class, 'updateProgress'])->name('karyawan.progress.update');
     Route::delete('/delete/image-progress/{id}', [KaryawanController::class, 'deleteImage'])->name('karyawan.imageProgress.delete');
+    Route::get('detail/progress/{id}', [TaskController::class, 'detailProgress'])->name(name: 'task.detail.progress');
 
 });
 
