@@ -3,10 +3,84 @@
 @section('title', 'Task List')
 
 @section('content')
+<style>
+    body {
+        background: linear-gradient(to bottom right, #CED2FB, #E8E9FF);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+
+    .card {
+        background-color: #E8F0FE; /* Warna background card */
+        border-radius: 7px;
+        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+        background-color: #E8F0FE; /* Warna background button */
+        color: #0B20E9; /* Warna font button */
+        font-weight: 500;
+        border: 2px solid #0B20E9;
+        border-radius: 7px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .btn {
+        background-color: #0B20E9; /* Warna hover button */
+        color: #FFFFFF;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    table {
+        border-collapse: separate;
+        border-spacing: 0;
+        background-color: #FFFFFF; /* Warna background tabel */
+    }
+
+    table thead {
+        background-color: #0B20E9; /* Warna background header tabel */
+        color: #FFFFFF; /* Warna font header tabel */
+    }
+
+    table tbody tr {
+        background-color: #F5F7FF; /* Warna background baris */
+        color: #0B20E9; /* Warna font isi tabel */
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    table tbody tr:hover {
+        background-color: #0B20E9; /* Warna background saat hover */
+        color: #FFFFFF; /* Warna font saat hover */
+    }
+
+    th, td {
+        vertical-align: middle;
+        padding: 12px;
+        border: 1px solid #E8E9FF;
+        text-align: center; /* Rata tengah */
+    }
+
+    th {
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    td {
+        font-size: 14px;
+    }
+</style>
 <div class="container mt-5">
     <div class="card">
-        <div class="card-header">
-            <h4 class="card-title">Daftar Task Karyawan</h4>
+        <div class="card-header" style="background-color: #0B20E9; color:#FFFFFF; padding-top:20px;">
+            <h6 class="card-title">Daftar Task Karyawan</h6>
         </div>
         <div class="card-body">
             @if($task->isEmpty())
