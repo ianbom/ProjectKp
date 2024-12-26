@@ -80,11 +80,11 @@ Route::prefix('karyawan')->group(function (){
     Route::get('/detail-task/{id}', [KaryawanController::class, 'detailTask'])->name('karyawan.task.detail');
     Route::get('/progress/create-task/{id}', [KaryawanController::class, 'createProgress'])->name('karyawan.progress.create');
     Route::post('/progress/store-task/{id}', [KaryawanController::class, 'storeProgress'])->name('karyawan.progress.store');
-    Route::get('/detail/progress/{id}', [KaryawanController::class, 'detailProgress'])->name('karyawan.progress.detail');
+    Route::get('/detail/{id}/progress', [KaryawanController::class, 'detailProgress'])->name('karyawan.progress.detail');
     Route::get('/edit/progress/{id}', [KaryawanController::class, 'editProgress'])->name('karyawan.progress.edit');
     Route::put('/update/progress/{id}', [KaryawanController::class, 'updateProgress'])->name('karyawan.progress.update');
     Route::delete('/delete/image-progress/{id}', [KaryawanController::class, 'deleteImage'])->name('karyawan.imageProgress.delete');
-    Route::get('detail/progress/{id}', [TaskController::class, 'detailProgress'])->name(name: 'task.detail.progress');
+    Route::get('detail/progress/{id}', [TaskController::class, 'detailProgress'])->name('task.detail.progress');
 
 });
 

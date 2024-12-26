@@ -219,6 +219,7 @@
                             <td>{{ \Carbon\Carbon::parse($progress->created_at)->format('d/m/Y H:i') }}</td>
                             <td>
                                 <a href="{{ route('karyawan.progress.detail', $progress->id_progress_task) }}" class="btn btn-sm">Detail</a>
+
                             </td>
                         </tr>
                     @empty
