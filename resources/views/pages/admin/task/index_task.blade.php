@@ -12,7 +12,7 @@
         }
 
         .card {
-            background-color: #E8F0FE; /* Warna background card */
+            background-color: #E8F0FE;
             border-radius: 7px;
             box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -23,49 +23,33 @@
             box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .btn:hover {
-            background-color: #E8F0FE; /* Warna background button */
-            color: #0B20E9; /* Warna font button */
-            font-weight: 500;
-            border: 2px solid #0B20E9;
-            border-radius: 7px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
-
-        .btn {
-            background-color: #0B20E9; /* Warna hover button */
-            color: #FFFFFF;
-            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-        }
-
         table {
             border-collapse: separate;
             border-spacing: 0;
-            background-color: #FFFFFF; /* Warna background tabel */
+            background-color: #FFFFFF;
         }
 
         table thead {
-            background-color: #0B20E9; /* Warna background header tabel */
-            color: #FFFFFF; /* Warna font header tabel */
+            background-color: #0B20E9;
+            color: #FFFFFF;
         }
 
         table tbody tr {
-            background-color: #F5F7FF; /* Warna background baris */
-            color: #0B20E9; /* Warna font isi tabel */
+            background-color: #F5F7FF;
+            color: #0B20E9;
             transition: background-color 0.3s, color 0.3s;
         }
 
         table tbody tr:hover {
-            background-color: #0B20E9; /* Warna background saat hover */
-            color: #FFFFFF; /* Warna font saat hover */
+            background-color: #0B20E9;
+            color: #FFFFFF;
         }
 
         th, td {
             vertical-align: middle;
             padding: 12px;
             border: 1px solid #E8E9FF;
-            text-align: center; /* Rata tengah */
+            text-align: center;
         }
 
         th {
@@ -76,13 +60,63 @@
         td {
             font-size: 14px;
         }
+
+
+
+        .btn {
+            background-color: #0B20E9;
+            color: #FFFFFF;
+            border-radius: 7px;
+            padding: 8px 20px;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #E8F0FE;
+            color: #0B20E9;
+            border: 2px solid #0B20E9;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }  /* Button and Dropdown Styles (matching Task Page) */
+        .btn.dropdown-toggle {
+            background-color: #0B20E9;
+            color: white;
+            border-radius: 7px;
+            border: none;
+            padding: 8px 20px;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn.dropdown-toggle:hover {
+            background-color: #E8F0FE;
+            color: #0B20E9;
+            border: 2px solid #0B20E9;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-menu {
+            background-color: #E8F0FE;
+            border-radius: 7px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            color: #0B20E9;
+        }
+
+        .dropdown-item:hover {
+            background-color: #0B20E9;
+            color: white;
+        }
     </style>
 
     <div class="row">
         <div class="col-md-12">
             <div class="card shadow border-0 p-3">
                 <div class="card-body">
-                    <a href="{{ route('task.create') }}" class="btn mb-3 px-4 py-2">
+
+                    <a href="{{ route('task.create') }}" class="btn mb-3">
                         + Tambah Task Baru
                     </a>
                     <div class="table-responsive">
@@ -146,4 +180,3 @@
         });
     });
 </script>
-

@@ -19,10 +19,12 @@
 
             <div class="card shadow-sm border-0 mb-5"
                 style="border-radius: 7px; background-color: #E8F0FE; transition: transform 0.3s, box-shadow 0.3s;">
-                <div class="card-body p-5">
-                    <!-- Judul -->
-                    <h2 class="font-weight-bold mb-4 text-center" style="color: #0B20E9;">Buat Task Baru</h2>
+                <div class="header" style="background-color: #0B20E9; color: white; border-radius: 8px 8px 0 0;">
+                    <p class="card-title text-left" style="padding-left:50px;">Tambah Taks Baru</p>
+                </div>
 
+
+                <div class="card-body p-5">
                     <!-- Penjelasan -->
                     <div class="mb-4"
                         style="color: #4A4A4A; font-size: 14px; line-height: 1.6; border-left: 4px solid #0B20E9; padding-left: 15px;
@@ -39,11 +41,11 @@
 
                         <!-- Pilih Proyek (Optional) -->
                         <div class="form-section mb-5">
-                            <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Pilih Project (Opsional)</h5>
+                            <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Pilih Project (Opsional)</h6>
                             <div class="form-group mb-4">
                                 <label for="id_projects" style="font-weight: 600;">Project</label>
                                 <select name="id_projects" id="id_projects" class="form-control shadow-sm"
-                                    style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;">
+                                    style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;">
                                     <option value="">Tidak Ada</option>
                                     @foreach($projects as $project)
                                         <option value="{{ $project->id }}">{{ $project->name }}</option>
@@ -54,11 +56,11 @@
 
                         <!-- Pilih Pengguna (Required) -->
                         <div class="form-section mb-5">
-                            <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Penugasan Pengguna</h5>
+                            <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Penugasan Pengguna</h6>
                             <div class="form-group mb-4">
                                 <label for="id" style="font-weight: 600;">Pilih Pengguna</label>
                                 <select name="id" id="id" class="form-control shadow-sm"
-                                    style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;" required>
+                                    style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
                                     <option value="">Pilih Pengguna</option>
                                     @foreach($user as $u)
                                         <option value="{{ $u->id }}">{{ $u->name }}</option>
@@ -69,46 +71,45 @@
 
                         <!-- Judul Tugas (Required) -->
                         <div class="form-section mb-5">
-                            <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Judul Task</h5>
+                            <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Judul Task</h6>
                             <div class="form-group mb-4">
                                 <label for="title" style="font-weight: 600;">Judul Task</label>
                                 <input type="text" name="title" id="title" class="form-control shadow-sm"
-                                    style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
+                                    style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
                                     placeholder="Masukkan judul tugas" required>
                             </div>
                         </div>
 
                         <!-- Deskripsi Tugas (Required) -->
                         <div class="form-section mb-5">
-                            <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Deskripsi Task</h5>
+                            <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Deskripsi Task</h6>
                             <div class="form-group mb-4">
                                 <label for="description" style="font-weight: 600;">Deskripsi Task</label>
                                 <textarea name="description" id="description" class="form-control shadow-sm"
-                                    style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
+                                    style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
                                     rows="5" placeholder="Masukkan deskripsi tugas" required></textarea>
                             </div>
                         </div>
 
                         <!-- Upload Gambar (Optional) -->
                         <div class="form-section mb-5">
-                            <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Unggah Gambar</h5>
+                            <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Unggah Gambar</h6>
                             <div class="form-group mb-4">
                                 <label for="image" style="font-weight: 600;">Upload Gambar</label>
                                 <input type="file" name="image[]" id="image" class="form-control shadow-sm"
-                                    style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;" multiple
+                                    style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" multiple
                                     accept="image/jpeg,image/png,application/pdf">
+                                <small class="form-text text-muted" style="margin-top: 5px;">Format yang didukung: JPG, PNG, PDF. Pastikan ukuran file sesuai ketentuan.</small>
                             </div>
                         </div>
 
                         <!-- Tombol Kirim -->
                         <div class="text-right mt-5">
-                            <button type="submit"
-                                    class="btn px-5 py-2">
+                            <button type="submit" class="btn px-5 py-2" style="background-color: #0B20E9; color: white; border-radius: 7px;">
                                 Buat Task
                             </button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
@@ -116,6 +117,14 @@
 
     <!-- Efek Hover dan Fokus -->
     <style>
+         .header {
+        background-color: #0B20E9;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        padding-bottom: 10px;
+        padding-top: 20px;
+    }
         .form-control:hover {
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
@@ -125,19 +134,8 @@
             border-color: #0B20E9;
         }
 
-        .btn {
-            background-color: #0B20E9; /* Warna tombol */
-            color: #FFFFFF;
-            font-weight: 500;
-            border: none;
-            border-radius: 7px;
-            padding: 10px 20px;
-            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-            transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
-        }
-
         .btn:hover {
-            background-color: #E8F0FE; /* Warna tombol saat hover */
+            background-color: #E8F0FE;
             color: #0B20E9;
             border: 2px solid #0B20E9;
         }
@@ -147,18 +145,9 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        h2 {
-            position: relative;
-        }
-
-        h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background-color: #0B20E9;
-            margin: 8px auto 0;
-            border-radius: 2px;
+        h6 {
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
 @endsection

@@ -83,6 +83,38 @@
         .table-responsive {
             padding: 15px;
         }
+          /* Button and Dropdown Styles (matching Task Page) */
+          .btn.dropdown-toggle {
+            background-color: #0B20E9;
+            color: white;
+            border-radius: 7px;
+            border: none;
+            padding: 8px 20px;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn.dropdown-toggle:hover {
+            background-color: #E8F0FE;
+            color: #0B20E9;
+            border: 2px solid #0B20E9;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-menu {
+            background-color: #E8F0FE;
+            border-radius: 7px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            color: #0B20E9;
+        }
+
+        .dropdown-item:hover {
+            background-color: #0B20E9;
+            color: white;
+        }
     </style>
 
     <div class="row">

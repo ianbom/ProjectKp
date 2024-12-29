@@ -3,12 +3,19 @@
 @section('title', 'Task Detail')
 
 @section('content')
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
     body {
         background: linear-gradient(to bottom right, #CED2FB, #E8E9FF);
         min-height: 100vh;
         margin: 0;
         padding: 0;
+    }
+    .card1 {
+        border-radius: 10px;
+        background-color: #FFFFFF;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .card {
@@ -101,6 +108,10 @@
     background-color: #ffffff;
     text-align: left;
 }
+.dropdown-menu {
+    right: auto !important;
+    left: 0 !important;
+}
 
 </style>
 
@@ -114,42 +125,87 @@
             <h6 class=" mb-4" style="color: #0B20E9; font-weight:600;">Informasi Project</h6>
 
             @if ($task->projects)
-                <table class="table table-bordered">
-                    <tr>
-                        <th>Project Name</th>
-                        <td>{{ $task->projects->name }}</td>
-                    </tr>
-                    <tr>
-                        <th>Jenis</th>
-                        <td>{{ $task->projects->jenis }}</td>
-                    </tr>
-                    <tr>
-                        <th>Keterangan</th>
-                        <td>{{ $task->projects->keterangan }}</td>
-                    </tr>
-                    <tr>
-                        <th>Deadline</th>
-                        <td>{{ \Carbon\Carbon::parse($task->projects->deadline)->format('d/m/Y H:i') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Status</th>
-                        <td>{{ $task->projects->status }}</td>
-                    </tr>
-                    <tr>
-                        <th>Masa Aktif</th>
-                        <td>{{ \Carbon\Carbon::parse($task->projects->masaaktif)->format('d/m/Y H:i') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Notes</th>
-                        <td>{{ $task->projects->notes }}</td>
-                    </tr>
-                    <tr>
-                        <th>Project Photo</th>
-                        <td>
-                            <a href="#">Lihat Foto Project</a>
-                        </td>
-                    </tr>
-                </table>
+            <div class="row">
+                <!-- Project Name -->
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Project Name</h6>
+                            <p>{{ $task->projects->name }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jenis -->
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Jenis</h6>
+                            <p>{{ $task->projects->jenis }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keterangan -->
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Keterangan</h6>
+                            <p>{{ $task->projects->keterangan }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deadline -->
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Deadline</h6>
+                            <p>{{ \Carbon\Carbon::parse($task->projects->deadline)->format('d/m/Y H:i') }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Status</h6>
+                            <p>{{ $task->projects->status }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Masa Aktif -->
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Masa Aktif</h6>
+                            <p>{{ \Carbon\Carbon::parse($task->projects->masaaktif)->format('d/m/Y H:i') }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Notes</h6>
+                            <p>{{ $task->projects->notes }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Photo -->
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Project Photo</h6>
+                            <a href="#" class="btn btn-outline-info btn-sm">Lihat Foto</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @else
             <div style="background-color: #FFFFFF; border-radius: 7px; padding: 15px; ">
                 <p style="margin: 0; color: #0B20E9; font-weight: 400; font-size: 14px;">Tugas ini tidak terhubung dengan project dari klien.</p>
@@ -160,20 +216,37 @@
             @endif
             <h6 class=" mt-5 mb-3" style="color: #0B20E9; font-weight:600;">Informasi Task</h6>
 
-            <table class="custom-table">
-                <tr>
-                    <th>Title</th>
-                    <td>{{ $task->title }}</td>
-                </tr>
-                <tr>
-                    <th>Description</th>
-                    <td>{{ $task->description }}</td>
-                </tr>
-                <tr>
-                    <th>Created At</th>
-                    <td>{{ \Carbon\Carbon::parse($task->created_at)->format('d/m/Y H:i') }}</td>
-                </tr>
-            </table>
+            <div class="row">
+                <!-- Title -->
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Title</h6>
+                            <p>{{ $task->title }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Description</h6>
+                            <p>{{ $task->description }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Created At -->
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Created At</h6>
+                            <p>{{ \Carbon\Carbon::parse($task->created_at)->format('d/m/Y H:i') }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <h6 class="mt-5 mb-4" style="color: #0B20E9; font-weight:600;">Progress Task</h6>            <div class="row" >
                 @forelse ($task->imageTask as $image)
@@ -218,9 +291,19 @@
                             <td>{{ $progress->comment ?? 'N/A' }}</td>
                             <td>{{ \Carbon\Carbon::parse($progress->created_at)->format('d/m/Y H:i') }}</td>
                             <td>
-                                <a href="{{ route('karyawan.progress.detail', $progress->id_progress_task) }}" class="btn btn-sm">Detail</a>
-
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                                        <li><a class="dropdown-item" href="{{ route('karyawan.progress.detail', $progress->id_progress_task) }}">Detail</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('karyawan.progress.edit', $progress->id_progress_task) }}">Edit</a></li>
+                                    </ul>
+                                </div>
                             </td>
+
+
+
                         </tr>
                     @empty
                         <tr>
@@ -229,6 +312,8 @@
                     @endforelse
                 </tbody>
             </table>
+            <a href="{{ route('karyawan.progress.create', $task->id_task) }}" class="btn btn-success mt-3">Buat Progress</a>
+
         </div>
     </div>
 </div>

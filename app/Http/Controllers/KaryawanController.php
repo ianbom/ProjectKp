@@ -65,7 +65,8 @@ class KaryawanController extends Controller
                 }
             }
 
-            return redirect()->back()->with('success', 'Berhasil anjay');
+            return redirect(url()->previous())->with('success', 'Berhasil Tersimpan');
+
         } catch (\Throwable $th) {
             return response()->json(['err' => $th->getMessage()]);
         }

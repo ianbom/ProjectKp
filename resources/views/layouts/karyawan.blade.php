@@ -16,6 +16,8 @@
     <link href="https://cdn.datatables.net/v/bs4/dt-1.13.6/datatables.min.css" rel="stylesheet">
 
     @stack('addon-style')
+
+
 </head>
 
 <body style="max-width: 100vw;">
@@ -28,7 +30,7 @@
                         <a href="#!" class="menu-toggle">
                             <img src="/images/dashboard/close.svg" alt="" srcset="" class="menu-logo"></a>
                         <a href="#" class="brand-logo">
-                            <img src="/images/dashboard/logo.png" alt="" srcset=""
+                            <img src="/images/dashboard/logo1.png" alt="" srcset=""
                                 class="logo-dashboard">
                             <span>
                                 <p class="title-dashboard my-auto" style="color: white;">
@@ -36,37 +38,22 @@
                                 </p>
                             </span>
                         </a>
+
                     </header>
+                    <hr style="border: none; border-top: 2px solid #FFFFFF; margin: 0;">
+
                     <nav class="dashboard-nav-list">
                         <div>
                             <a href="{{ route('karyawan.task.index') }}"
                                 class="dashboard-nav-item  {{ request()->is('karyawan') ? 'active-item' : '' }}">
-                                <svg class="menu-icon menu-icon-normal" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M4 13h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zm0 8h6c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1zm10 0h6c.55 0 1-.45 1-1v-8c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zM13 4v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1z" />
-                                </svg>
+                                <svg class="menu-icon menu-icon-normal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M3 13h18v2H3zm0-4h18v2H3zm0-4h18v2H3z"/>
+                                  </svg>
                                 <p class="menu-font ml-1 my-auto  {{ request()->is('karyawan') ? 'active-menu' : '' }}">
                                     My Task
                                 </p>
                             </a>
                         </div>
-
-                        {{-- <div>
-                            <a href="{{ route('karyawan.task.index') }}"
-                                class="dashboard-nav-item  {{ request()->is('karyawan') ? 'active-item' : '' }}">
-                                <svg class="menu-icon menu-icon-normal" xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24">
-                                    <path
-                                        d="M4 13h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zm0 8h6c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1zm10 0h6c.55 0 1-.45 1-1v-8c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1zM13 4v4c0 .55.45 1 1 1h6c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1h-6c-.55 0-1 .45-1 1z" />
-                                </svg>
-                                <p class="menu-font ml-1 my-auto  {{ request()->is('karyawan') ? 'active-menu' : '' }}">
-                                    My Project
-                                </p>
-                            </a>
-                        </div> --}}
-
-
 
 
                         {{-- <div class="nav-item-divider" style="margin-top: 40vh;"></div> --}}
@@ -172,6 +159,10 @@
         });
     </script>
     @stack('addon-script')
+
+
+
 </body>
 
 </html>
+

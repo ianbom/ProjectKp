@@ -25,11 +25,11 @@
     <nav class="navbar navbar-light d-lg-block  bg-navbar ">
         <div class="d-flex justify-content-between content-nav">
             <div class="d-flex">
-                <img src="/images/dashboard/logo.png" width="40" height="40"
+                <img src="/images/dashboard/logo1.png" width="40" height="30"
                     class="d-inline-block align-top" alt="">
-                <a class="navbar-brand font-weight-bold font-nav ml-2" href="#">
+                <p class="navbar-brand font-weight-bold font-nav ml-2" >
                     Portal Client
-                </a>
+                </p>
             </div>
 
             <!-- List Menu -->

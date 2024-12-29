@@ -83,17 +83,46 @@
             font-weight: bold;
             margin: 0;
         }
+
+        /* Button and Dropdown Styles (matching Task Page) */
+        .btn.dropdown-toggle {
+            background-color: #0B20E9;
+            color: white;
+            border-radius: 7px;
+            border: none;
+            padding: 8px 20px;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn.dropdown-toggle:hover {
+            background-color: #E8F0FE;
+            color: #0B20E9;
+            border: 2px solid #0B20E9;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-menu {
+            background-color: #E8F0FE;
+            border-radius: 7px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown-item {
+            color: #0B20E9;
+        }
+
+        .dropdown-item:hover {
+            background-color: #0B20E9;
+            color: white;
+        }
     </style>
 
     <div class="row">
         <div class="col-md-12">
             <div class="card shadow border-0 p-3">
                 <div class="card-body">
-                    <div class="header-container">
-                        <div class="header-content">
-                            <h1 class="header-title">All Projects</h1>
-                        </div>
-                    </div>
+                   
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered" id="projects-table">
                             <thead>
@@ -111,7 +140,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- Data fetched dynamically --}}
+
                             </tbody>
                         </table>
                     </div>
@@ -119,9 +148,8 @@
             </div>
         </div>
     </div>
+
 @endsection
-
-
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -149,4 +177,3 @@ $(document).ready(function() {
     });
 });
 </script>
-

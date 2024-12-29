@@ -20,13 +20,14 @@
 
             <div class="card shadow-sm border-0 mb-5"
                 style="border-radius: 7px; background-color: #E8F0FE; transition: transform 0.3s, box-shadow 0.3s;">
+                <div class="header" style="background-color: #0B20E9; color: white; border-radius: 8px 8px 0 0;">
+                    <h6 class="card-title text-left" style="padding-left:50px;">Edit Kata Sandi</h6>
+                </div>
                 <div class="card-body p-5">
-                    <!-- Title -->
-                    <h2 class="font-weight-bold mb-4 text-center" style="color: #0B20E9;">Edit Kata Sandi</h2>
 
                     <!-- Explanation -->
                     <div class="mb-4"
-                        style="color: #4A4A4A; font-size: 14px; line-height: 1.6; border-left: 4px solid #0B20E9; padding-left: 15px;
+                        style="color: #4A4A4A; font-size: 14px; line-height: 3; border-left: 4px solid #0B20E9; padding-left: 15px;
                                 background-color: #FFFFFF; border-radius: 7px; box-shadow: 0 4px 7px rgba(0, 0, 0, 0.02);">
                         <p>
                             Edit password dengan hati-hati. Pastikan kata sandi yang Anda masukkan aman dan sesuai dengan
@@ -65,6 +66,13 @@
 
     <!-- Hover and Focus Effects -->
     <style>
+        .header {
+        background-color: #0B20E9;
+        color: white;
+        font-weight: bold;
+        padding-bottom: 10px;
+        padding-top: 20px;
+    }
         .form-control:hover {
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }

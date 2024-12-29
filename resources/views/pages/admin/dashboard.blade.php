@@ -16,61 +16,44 @@
         <div class="col-sm-4 grid-margin">
             <a href="{{ route('client.index') }}" class="text-decoration-none text-dark">
 
-                <div class="card shadow border-0 card-list">
-                    <div class="card-body">
+                <div class="card shadow border-1 card-list" style="border-color: #0090E7; border-radius: 8px;">
+                    <div class="card-body" style="background-color: #C7E3F4; border-radius: 8px;">
                         <div class="row">
                             <div class="col-8 col-sm-12 col-xl-8 my-auto">
                                 <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                    <img src="/images/dashboard/client.svg" alt="client" class="logo-row">
-                                    <h5 class="ml-3 my-auto">Client</h5>
+                                    <img src="/images/dashboard/client.svg" alt="client" class="logo-row" style="color: #0090E7;">
+                                    <h5 class="ml-3 my-auto" style="color: #0090E7;">Client</h5>
                                 </div>
-
                             </div>
-                            <div class="col-4  my-auto">
+                            <div class="col-4 my-auto">
                                 <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                    <h1 class="mb-0">{{ $client }}</h1>
+                                    <h1 class="mb-0" style="color: #0090E7;">{{ $client }}</h1>
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="row mt-2">
-                            <div class="col-8 col-sm-12 col-xl-12 my-auto">
-                                <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                    <h2 class="mb-0">{{ $client }}</h2>
-                                </div>
-                            </div>
-
-                        </div> --}}
                     </div>
                 </div>
+
             </a>
         </div>
 
         <div class="col-sm-4 grid-margin">
             <a href="#" class="text-decoration-none text-dark">
-
-                <div class="card shadow border-0 card-list">
-                    <div class="card-body">
+                <div class="card shadow border-1 card-list" style="border-color: #00D25B; border-radius: 8px;">
+                    <div class="card-body" style="background-color: #CAF7DE; border-radius: 8px;">
                         <div class="row">
-                            <div class="col-8  my-auto">
+                            <div class="col-8 col-sm-12 col-xl-8 my-auto">
                                 <div class="d-flex d-sm-block d-md-flex align-items-center">
                                     <img src="/images/dashboard/project.svg" alt="client" class="logo-row">
-                                    <h5 class="ml-3 my-auto">Project</h5>
+                                    <h5 class="ml-3 my-auto" style="color: #00D25B;">Project</h5>
                                 </div>
                             </div>
-                            <div class="col-4  my-auto">
+                            <div class="col-4 my-auto">
                                 <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                    <h1 class="mb-0">{{ $project }}</h1>
+                                    <h1 class="mb-0" style="color: #00D25B;">{{ $project }}</h1>
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="row mt-2">
-                            <div class="col-8 col-sm-12 col-xl-12 my-auto">
-                                <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                    <h2 class="mb-0">{{ $project }}</h2>
-                                </div>
-                            </div>
-
-                        </div> --}}
                     </div>
                 </div>
 
@@ -79,40 +62,34 @@
 
         <div class="col-sm-4 grid-margin">
             <a href="#" class="text-decoration-none text-dark">
-                <div class="card shadow border-0 card-list">
-                    <div class="card-body">
+                <div class="card shadow border-1 card-list" style="border-color: #FC424A; border-radius: 8px;">
+                    <div class="card-body" style="background-color: #FDDADC; border-radius: 8px;">
                         <div class="row">
                             <div class="col-8 col-sm-12 col-xl-8 my-auto">
                                 <div class="d-flex d-sm-block d-md-flex align-items-center">
                                     <img src="/images/dashboard/admin.svg" alt="client" class="logo-row">
-                                    <h5 class="ml-3 my-auto">Admin</h5>
+                                    <h5 class="ml-3 my-auto" style="color: #FC424A;">Admin</h5>
                                 </div>
                             </div>
-                            <div class="col-4  my-auto">
+                            <div class="col-4 my-auto">
                                 <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                    <h1 class="mb-0">{{ $admin }}</h1>
+                                    <h1 class="mb-0" style="color: #FC424A;">{{ $admin }}</h1>
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="row mt-2">
-                            <div class="col-8 col-sm-12 col-xl-12 my-auto">
-                                <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                    <h2 class="mb-0">{{ $admin }}</h2>
-                                </div>
-                            </div>
-
-                        </div> --}}
                     </div>
                 </div>
+
+
             </a>
         </div>
     </div>
 
-    <div class="row mt-1">
+    <div class="row mt-3">
 
         <div class="col-md-6">
-            <div class="card shadow border-0 card-important bg-white mb-3 p-0">
-                <div class="card-title p-3" style="background-color: #0560fd; border-radius: 7px 10px 0px 0px;">
+            <div class="card shadow border-0 card-important p-0" style="background: #E8F0FE;">
+                <div class="card-title p-3" style="background-color: #0B20E9; border-radius: 7px 10px 0px 0px;">
                     {{-- <h5 class="m-0 font-weight-bold">Notifications</h5> --}}
                     <div class="container p-0 m-0">
                         <div class="row">
@@ -136,36 +113,36 @@
                     </div>
 
                 </div>
-                <div class="card-body p-0">
-
+                <div class="card-body" style="background: #E8F0FE;">
                     @foreach ($recentnoti as $noti)
-                        <div class="p-3 d-flex align-items-center border-0">
-
-                            <div class="font-weight-bold mr-3">
-                                <div class="text-truncate text-wrap">{{ $noti->guest_name }} has commented on
-                                    {{ $noti->name }}
-                                    project</div>
-                                <div class="text-truncate font-weight-normal text-wrap">{{ $noti->comment }}</div>
-                                <a href="/details/comments/{{ $noti->slug }}" target="_blank"
-                                    class="btn btn-outline-success btn-sm mt-2 rounded-pill">View Comment</a>
-                            </div>
-                            <span class="ml-auto mb-auto">
-
-                                <div class="text-right text-muted pt-1 text-wrap">
-                                    {{ \Carbon\Carbon::parse($noti->created_at)->diffForHumans() }}
+                        <div class="p-3 d-flex flex-column" style="border-bottom: 1px solid #0B20E9; margin-bottom: 10px;">
+                            <div class="d-flex justify-content-between">
+                                <div class="font-weight-bold">
+                                    <div class="text-truncate text-wrap">{{ $noti->guest_name }} has commented on
+                                        {{ $noti->name }} project
+                                    </div>
+                                    <div class="text-truncate font-weight-normal text-wrap">{{ $noti->comment }}</div>
                                 </div>
-                            </span>
+                                <div>
+                                    <a href="/details/comments/{{ $noti->slug }}" target="_blank" class="btn btn-outline-success btn-sm mt-2 rounded-pill">View Comment</a>
+                                </div>
+                            </div>
+                            <div class="text-right text-muted pt-1 text-wrap">
+                                {{ \Carbon\Carbon::parse($noti->created_at)->diffForHumans() }}
+                            </div>
                         </div>
                     @endforeach
-
                 </div>
+
+
+
             </div>
 
         </div>
 
         <div class="col-md-6">
-            <div class="card shadow border-0 card-important bg-white mb-3 p-0">
-                <div class="card-title p-3" style="background-color: #0560fd; border-radius: 7px 10px 0px 0px;">
+            <div class="card shadow border-0 card-important p-0" style="background: #E8F0FE;">
+                <div class="card-title p-3" style="background-color: #0B20E9; border-radius: 7px 10px 0px 0px;">
                     {{-- <h5 class="m-0 font-weight-bold">Recent Clients</h5> --}}
                     <div class="container p-0 m-0">
                         <div class="row">
@@ -188,34 +165,33 @@
                     </div>
 
                 </div>
-                <div class="card-body p-0">
+                <div class="card-body P-2" style="background: #E8F0FE;">
 
                     @foreach ($recentclient as $recentclients)
-                        <div class="p-3 border-0">
-                            <div>
-                                <div class="d-flex">
-                                    <div class="font-weight-bold section-left-2 overflow-hidden" style="font-size: 18px;">
+                        <div class="border-0">
+                            <div class="p-3 d-flex flex-column" style="border-bottom: 1px solid #0B20E9; margin-bottom: 15px; ">
+                                <div class="d-flex justify-content-between">
+                                    <div class="font-weight-bold section-left-2 overflow-hidden" style="font-size: 18px; color: #0B20E9;">
                                         {{ $recentclients->name }}
                                     </div>
-                                    <div class="section-right-2 my-auto text-right  text-muted ">
+                                    <div class="section-right-2 my-auto text-right text-muted">
                                         {{ \Carbon\Carbon::parse($recentclients->created_at)->diffForHumans() }}
                                     </div>
                                 </div>
-                                <div class="font-weight-bold mt-2">Slug : <a href="/details/{{ $recentclients->slug }}"
-                                        target="_blank">
-                                        {{ $recentclients->slug }}
-                                    </a>
+                                <div class="mt-2">
+                                    <div class="font-weight-normal" style="font-size: 16px;">Slug:
+                                        <a href="/details/{{ $recentclients->slug }}" target="_blank" class="text-primary">
+                                           <b> {{ $recentclients->slug }} </b>
+                                        </a>
+                                    </div>
+                                    <div class="font-weight-normal" style="font-size: 16px;">Password: <b> {{ $recentclients->password }}</b></div>
                                 </div>
-                                <div class="font-weight-bold">
-                                    Password : {{ $recentclients->password }}
-                                </div>
-
                             </div>
-
                         </div>
                     @endforeach
 
                 </div>
+
             </div>
 
         </div>

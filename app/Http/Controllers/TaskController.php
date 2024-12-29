@@ -62,8 +62,6 @@ class TaskController extends Controller
 
 
 
-
-
     public function create(){
         $projects = Project::all();
         $user = User::all();

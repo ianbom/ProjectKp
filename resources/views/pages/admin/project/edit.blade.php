@@ -20,18 +20,22 @@
 
         <div class="card shadow-sm border-0 mb-5"
             style="border-radius: 7px; background-color: #E8F0FE; transition: transform 0.3s, box-shadow 0.3s;">
+            <div class="header" style="background-color: #0B20E9; color: white; border-radius: 8px 8px 0 0;">
+                <h6 class="card-title text-left" style="padding-left:50px;">Edit Project</h6>
+            </div>
             <div class="card-body p-5">
                 <!-- Judul -->
-                <h2 class="font-weight-bold mb-4 text-center" style="color: #0B20E9;">Edit Project</h2>
+
 
                 <!-- Penjelasan -->
-                <div class="mb-4"
-                    style="color: #4A4A4A; font-size: 14px; line-height: 1.6; border-left: 4px solid #0B20E9; padding-left: 15px;
-                            background-color: #FFFFFF; border-radius: 7px; box-shadow: 0 4px 7px rgba(0, 0, 0, 0.02);">
-                    <p>
-                        Edit informasi project dengan hati-hati. Pastikan data yang diubah akurat dan sesuai kebutuhan.
-                    </p>
-                </div>
+                <div class="mb-4 mt-4  "
+                style="color: #4A4A4A; font-size: 14px; line-height: 1.6; border-left: 4px solid #0B20E9; padding-left: 15px; padding-top:1px;  padding-bottom:1px;
+                        background-color: #FFFFFF; border-radius: 7px; box-shadow: 0 4px 7px rgba(0, 0, 0, 0.02);">
+                <p style="margin-top: 20px;" >
+                    Edit informasi project dengan hati-hati. Pastikan data yang diubah akurat dan sesuai kebutuhan.
+                </p>
+            </div>
+
 
                 <!-- Formulir -->
                 <form action="{{ route('project.update', $item->id) }}" method="POST" enctype="multipart/form-data"
@@ -41,7 +45,7 @@
 
                     <!-- Informasi Project -->
                     <div class="form-section mb-5">
-                        <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Informasi Project</h5>
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Informasi Project</h6>
                         <div class="form-group mb-4">
                             <label for="name" style="font-weight: 600;">Nama Project</label>
                             <input type="text" name="name" id="name" class="form-control shadow-sm"
@@ -90,19 +94,20 @@
 
                     <!-- Gambar Project -->
                     <div class="form-section mb-5">
-                        <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Gambar Project</h5>
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Gambar Project</h6>
                         <div class="form-group mb-4">
                             <label for="photo" style="font-weight: 600;">Foto Project</label>
                             <input type="file" name="photo" id="photo" class="form-control shadow-sm"
                                 style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;">
                             <img src="{{ Storage::url($item->photo) }}" height="250px" width="200"
-                                style="object-fit: contain;">
+                                style="object-fit: contain; margin-top: 15px;">
                         </div>
                     </div>
 
                     <!-- Tombol Simpan -->
                     <div class="text-right mt-5">
-                        <button type="submit" class="btn px-5 py-2">
+                        <button type="submit" class="btn px-5 py-2"
+                            style="background-color: #0B20E9; color: white; border-radius: 7px;">
                             Simpan
                         </button>
                     </div>
@@ -115,12 +120,19 @@
 
 <!-- Efek Hover dan Fokus -->
 <style>
+    .header {
+        background-color: #0B20E9;
+        color: white;
+        font-weight: bold;
+        padding-bottom: 10px;
+        padding-top: 20px;
+    }
     .form-control:hover {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     .form-control:focus {
-        box-shadow: 0 4px 12px rgba(11, 32, 233, 0.2);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         border-color: #0B20E9;
     }
 

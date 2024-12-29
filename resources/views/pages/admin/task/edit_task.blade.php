@@ -17,13 +17,16 @@
         @endif
 
         <div class="card shadow-sm border-0 mb-5" style="border-radius: 7px; background-color: #E8F0FE; transition: transform 0.3s, box-shadow 0.3s;">
-            <div class="card-body p-5">
-                <!-- Title -->
-                <h2 class="font-weight-bold mb-4 text-center" style="color: #0B20E9;">Edit Tugas</h2>
+            <div class="header" style="background-color: #0B20E9; color: white; border-radius: 8px 8px 0 0;">
+                <p class="card-title text-left" style="padding-left:50px;">Edit Tugas</p>
+            </div>
 
+            <div class="card-body p-5">
                 <!-- Task Information Section -->
-                <div class="mb-4 mt-5" style="color: #4A4A4A; font-size: 14px; line-height: 1.6; border-left: 4px solid #0B20E9; padding-left: 15px; background-color: #FFFFFF; border-radius: 7px; box-shadow: 0 4px 7px rgba(0, 0, 0, 0.02);">
-                    <p>
+                <div class="" style="color: #4A4A4A; font-size: 14px; line-height: 3;
+                border-left: 4px solid #0B20E9; padding-left: 15px; background-color: #FFFFFF; border-radius: 7px; box-shadow: 0 4px 7px rgba(0, 0, 0, 0.02); margin-top:2px; margin-bottom: 2 px;
+                ">
+                    <p >
                         Pastikan detail tugas diperbarui dengan benar. Periksa kembali pemilihan proyek dan pengguna sebelum memperbarui.
                     </p>
                 </div>
@@ -35,10 +38,10 @@
 
                     <!-- Project Selection -->
                     <div class="form-section mb-5">
-                        <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Detail Proyek</h5>
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Detail Proyek</h6>
                         <div class="form-group mb-4">
                             <label for="id_projects" style="font-weight: 600;">Pilih Proyek</label>
-                            <select class="form-select shadow-sm" id="id_projects" name="id_projects" style="border: 1px solid #0B20E9; border-radius: 7px;" required>
+                            <select class="form-control shadow-sm" id="id_projects" name="id_projects" style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
                                 <option value="">Tidak Ada Proyek</option>
                                 @foreach($projects as $project)
                                     <option value="{{ $project->id }}" {{ $task->id_projects == $project->id ? 'selected' : '' }}>
@@ -51,10 +54,10 @@
 
                     <!-- User ID Selection -->
                     <div class="form-section mb-5">
-                        <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Informasi Pengguna</h5>
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Informasi Pengguna</h6>
                         <div class="form-group mb-4">
                             <label for="id" style="font-weight: 600;">ID Pengguna</label>
-                            <select class="form-select shadow-sm" id="id" name="id" style="border: 1px solid #0B20E9; border-radius: 7px;" required>
+                            <select class="form-control shadow-sm" id="id" name="id" style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
                                 @foreach($user as $u)
                                     <option value="{{ $u->id }}" {{ $task->id == $u->id ? 'selected' : '' }}>
                                         {{ $u->name }}
@@ -66,28 +69,28 @@
 
                     <!-- Title Input -->
                     <div class="form-section mb-5">
-                        <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Judul Tugas</h5>
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Judul Tugas</h6>
                         <div class="form-group mb-4">
                             <label for="title" style="font-weight: 600;">Judul</label>
-                            <input type="text" name="title" id="title" class="form-control shadow-sm" style="border: 1px solid #0B20E9; border-radius: 7px;" value="{{ $task->title }}" required>
+                            <input type="text" name="title" id="title" class="form-control shadow-sm" style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" value="{{ $task->title }}" required>
                         </div>
                     </div>
 
                     <!-- Description Input -->
                     <div class="form-section mb-5">
-                        <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Deskripsi Tugas</h5>
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Deskripsi Tugas</h6>
                         <div class="form-group mb-4">
                             <label for="description" style="font-weight: 600;">Deskripsi</label>
-                            <textarea class="form-control shadow-sm" id="description" name="description" rows="3" style="border: 1px solid #0B20E9; border-radius: 7px;" required>{{ $task->description }}</textarea>
+                            <textarea class="form-control shadow-sm" id="description" name="description" rows="3" style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>{{ $task->description }}</textarea>
                         </div>
                     </div>
 
                     <!-- Image Upload Section -->
                     <div class="form-section mb-5">
-                        <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Unggah Gambar</h5>
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Unggah Gambar</h6>
                         <div class="form-group mb-4">
                             <label for="image" style="font-weight: 600;">Unggah Gambar Baru</label>
-                            <input type="file" class="form-control shadow-sm" id="image" name="image[]" multiple style="border: 1px solid #0B20E9; border-radius: 7px;">
+                            <input type="file" class="form-control shadow-sm" id="image" name="image[]" multiple style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;">
                             <small class="text-muted">Anda dapat mengunggah beberapa gambar. Format yang diperbolehkan: jpeg, png, jpg, pdf.</small>
                         </div>
                     </div>
@@ -121,8 +124,12 @@
 
                     <!-- Action Buttons -->
                     <div class="text-right mt-5">
-                        <button type="submit" class="btn px-5 py-2" style="background-color: #0B20E9; color: #fff;">Simpan</button>
-                        <a href="{{ route('task.index') }}" class="btn px-5 py-2 btn-secondary" style="background-color: #E8F0FE; border: 2px solid #0B20E9; color:#0B20E9">Batal</a>
+                        <button type="submit" class="btn px-5 py-2" style="background-color: #0B20E9; color: white; border-radius: 7px;">
+                            Simpan
+                        </button>
+                        <a href="{{ route('task.index') }}" class="btn px-5 py-2 btn-secondary" style="background-color: #E8F0FE; border: 2px solid #0B20E9; color:#0B20E9">
+                            Batal
+                        </a>
                     </div>
                 </form>
             </div>
@@ -151,18 +158,16 @@
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
 
-    h2 {
-        position: relative;
+    h6 {
+        font-size: 18px;
+        font-weight: bold;
     }
-
-    h2::after {
-        content: '';
-        display: block;
-        width: 60px;
-        height: 3px;
+    .header {
         background-color: #0B20E9;
-        margin: 8px auto 0;
-        border-radius: 2px;
+        color: white;
+        font-weight: bold;
+        padding-bottom: 10px;
+        padding-top: 20px;
     }
 </style>
 
