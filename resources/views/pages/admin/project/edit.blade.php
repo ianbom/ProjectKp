@@ -1,7 +1,7 @@
-@extends('layouts.admin1')
+    @extends('layouts.admin1')
 
 @section('title')
-    Edit Project {{ $item->name }}
+    Edit Project
 @endsection
 
 @section('content')
@@ -72,6 +72,15 @@
                                 style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
                                 required>{{ $item->keterangan }}</textarea>
                         </div>
+
+                        <div class="form-group mb-4">
+                            <label for="notes" style="font-weight: 600;">Notes</label>
+                            <textarea type="text" name="notes" id="notes"
+                                class="form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
+                                required>{{ $item->notes }}</textarea>
+                        </div>
+
                         <div class="form-group mb-4">
                             <label for="deadline" style="font-weight: 600;">Deadline</label>
                             <input type="datetime-local" name="deadline" id="deadline"
@@ -79,6 +88,15 @@
                                 style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
                                 value="{{ $item->deadline }}" required>
                         </div>
+
+                        <div class="form-group mb-4">
+                            <label for="masaaktif" style="font-weight: 600;">Masa Aktif</label>
+                            <input type="datetime-local" name="masaaktif" id="masaaktif"
+                                class="form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
+                                value="{{ $item->masaaktif }}" required>
+                        </div>
+
                         <div class="form-group mb-4">
                             <label for="status" style="font-weight: 600;">Status</label>
                             <select class="form-control shadow-sm" name="status" id="status"

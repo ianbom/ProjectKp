@@ -60,7 +60,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->namespace('Admin')->group
     Route::post('/store', [TaskController::class, 'store'])->name('task.store');
     Route::delete('/delete/{id}', [TaskController::class, 'delete'])->name('task.delete');
     Route::get('detail/{id}', [TaskController::class, 'detail'])->name('task.detail');
-    Route::get('detail/progress/{id}', [TaskController::class, 'detailProgress'])->name(name: 'task.detail.progress');
+    Route::get('detail/progress/{id}', [TaskController::class, 'detailProgress'])->name('admin.detail.progress');
+    Route::get('edit/detail/progress/{id}', [TaskController::class, 'editDetailProgress'])->name('edit.detail.progress');
     Route::put('update/progress/{id}', [TaskController::class, 'updateProgress'])->name('task.detail.update');
     Route::delete('delete/imageTask/{id}', [TaskController::class, 'deleteImage'])->name('image.task.delete');
     });

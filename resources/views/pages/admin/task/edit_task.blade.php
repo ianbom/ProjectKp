@@ -32,11 +32,12 @@
                 </div>
 
                 <!-- Form Start -->
-                <form action="{{ route('task.update', $task->id_task) }}" method="POST" enctype="multipart/form-data" style="border: 1px solid #0B20E9; border-radius: 7px; padding: 20px; background-color: #ffffff;">
+                <form action="{{ route('task.update', $task->id_task) }}" method="POST" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
 
-                    <!-- Project Selection -->
+                    <div class="form" style="border: 1px solid #0B20E9; border-radius: 7px; padding: 20px; background-color: #ffffff;">
+                        <!-- Project Selection -->
                     <div class="form-section mb-5">
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Detail Proyek</h6>
                         <div class="form-group mb-4">
@@ -95,33 +96,6 @@
                         </div>
                     </div>
 
-                    <!-- Current Images Section -->
-                    <div class="mb-3">
-                        <label for="current_images" class="form-label" style="font-weight: 600;">Gambar Saat Ini</label>
-                        <div class="d-flex flex-wrap">
-                            @if($task->imageTask && $task->imageTask->isNotEmpty())
-                                @foreach($task->imageTask as $image)
-                                    <div class="m-2">
-                                        @if(pathinfo($image->image, PATHINFO_EXTENSION) === 'pdf')
-                                            <p>{{ $image->image }}</p>
-                                            <a href="{{ asset('storage/' . $image->image) }}" target="_blank" class="btn btn-primary btn-sm">Unduh PDF</a>
-                                        @else
-                                            <img src="{{ asset('storage/' . $image->image) }}" alt="Gambar Tugas" width="100" height="100" style="object-fit: cover; border-radius: 7px;">
-                                        @endif
-                                        <!-- Delete Button Below Image -->
-                                        <form action="{{ route('image.task.delete', $image->id_task_image) }}" method="POST" class="mt-2">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                        </form>
-                                    </div>
-                                @endforeach
-                            @else
-                                <p>Tidak ada gambar tersedia</p>
-                            @endif
-                        </div>
-                    </div>
-
                     <!-- Action Buttons -->
                     <div class="text-right mt-5">
                         <button type="submit" class="btn px-5 py-2" style="background-color: #0B20E9; color: white; border-radius: 7px;">
@@ -131,7 +105,39 @@
                             Batal
                         </a>
                     </div>
-                </form>
+                    </form>
+
+                    <!-- Current Images Section -->
+                        <div class="mb-3">
+                            <label for="current_images" class="form-label" style="font-weight: 600;">Gambar Saat Ini</label>
+                            <div class="d-flex flex-wrap">
+                                @if($task->imageTask && $task->imageTask->isNotEmpty())
+                                    @foreach($task->imageTask as $image)
+                                        <div class="m-2">
+                                            @if(pathinfo($image->image, PATHINFO_EXTENSION) === 'pdf')
+                                                <p>{{ $image->image }}</p>
+                                                <a href="{{ asset('storage/' . $image->image) }}" target="_blank" class="btn btn-primary btn-sm">Unduh PDF</a>
+                                            @else
+                                                <img src="{{ asset('storage/' . $image->image) }}" alt="Gambar Tugas" width="100" height="100" style="object-fit: cover; border-radius: 7px;">
+                                            @endif
+                                            <!-- Delete Button Below Image -->
+                                            <form action="{{ route('image.task.delete', $image->id_task_image) }}" method="POST" class="mt-2">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
+                                            </form>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <p>Tidak ada gambar tersedia</p>
+                                @endif
+                            </div>
+                        </div>
+
+
+                </div>
+
+
             </div>
         </div>
     </div>

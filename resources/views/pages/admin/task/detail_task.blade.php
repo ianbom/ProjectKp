@@ -245,7 +245,7 @@
                             <td>{{ $progress->comment ?? 'N/A' }}</td>
                             <td>{{ \Carbon\Carbon::parse($progress->created_at)->format('d/m/Y H:i') }}</td>
                             <td>
-                                <a class="btn btn-sm" href="{{ route('task.detail.progress', $progress->id_progress_task) }}">Detail</a>
+                                <a class="btn btn-sm" href="{{ route('edit.detail.progress', $progress->id_progress_task) }}">Detail</a>
                             </td>
                         </tr>
                     @empty

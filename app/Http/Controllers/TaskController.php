@@ -135,9 +135,7 @@ class TaskController extends Controller
             'image.*' => 'file|mimes:jpeg,png,jpg,pdf'
         ]);
 
-
         $task = Task::findOrFail($id_task);
-
 
         $task->update([
             'id_projects' => $request->id_projects,
@@ -189,6 +187,12 @@ class TaskController extends Controller
         $progress = ProgressTask::findOrFail($id);
 
         return view('pages.admin.task.edit_progress_task', ['progress' => $progress]);
+    }
+
+    public function editDetailProgress($id){
+        $progress = ProgressTask::findOrFail($id);
+
+        return view('pages.admin.task.admin_edit_detail_progress', ['progress' => $progress]);
     }
 
     public function updateProgress($id, Request $request){
