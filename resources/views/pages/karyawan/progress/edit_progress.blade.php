@@ -43,16 +43,16 @@
                         style="border: 1px solid #0B20E9; border-radius: 7px;">
                         <option value="On-Going" {{ $progress->status === 'On-Going' ? 'selected' : '' }}>On-Going</option>
                         <option value="Completed" {{ $progress->status === 'Completed' ? 'selected' : '' }}>Completed</option>
-                        <option value="Revisi" {{ $progress->status === 'Revisi' ? 'selected' : '' }}>Revisi</option>
+                        <option value="On-Check" {{ $progress->status === 'On-Check' ? 'selected' : '' }}>On-Check</option>
                     </select>
                 </div>
 
                 <!-- Komentar -->
-                <div class="form-section mb-5">
+                {{-- <div class="form-section mb-5">
                     <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Komentar</h6>
                     <textarea name="comment" id="comment" class="form-control shadow-sm" rows="4"
                         style="border: 1px solid #0B20E9; border-radius: 7px;">{{ old('comment', $progress->comment) }}</textarea>
-                </div>
+                </div> --}}
 
                 <!-- Upload Gambar/PDF -->
                 <div class="form-section mb-5">
