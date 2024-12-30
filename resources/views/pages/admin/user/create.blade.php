@@ -72,8 +72,8 @@
                                 <select name="roles" id="roles" class="form-control shadow-sm"
                                     style="border: 1px solid #080e44; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
                                     <option value="" disabled selected>Pilih Roles</option>
-                                    <option value="USER">USER</option>
                                     <option value="ADMIN">ADMIN</option>
+                                    <option value="KARYAWAN">KARYAWAN</option>
                                 </select>
                             </div>
                         </div>
