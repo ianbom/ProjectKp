@@ -159,7 +159,7 @@
             <h5 class="mt-5 mb-4" style="color: #0B20E9; font-weight: bold;">Tambah Komentar</h5>
             <div class="card shadow-sm border-0">
                 <div class="card-body">
-                    <form action="{{ route('task.detail.update', $progress->id) }}" method="POST">
+                    <form action="{{ route('task.detail.update', $progress->id_progress_task) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -170,7 +170,7 @@
                             <label for="status" class="form-label" style="color: #0B20E9; font-weight: bold;">Status</label>
                             <select class="form-select" id="status" name="status">
                                 <option value="On-Going" {{ $progress->status === 'On-Going' ? 'selected' : '' }}>On-Going</option>
-                                <option value="Revisi" {{ $progress->status === 'Revisi' ? 'selected' : '' }}>Revisi</option>
+                                <option value="On-Check" {{ $progress->status === 'On-Check' ? 'selected' : '' }}>On-Check</option>
                                 <option value="Completed" {{ $progress->status === 'Completed' ? 'selected' : '' }}>Completed</option>
                             </select>
                         </div>

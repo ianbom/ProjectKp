@@ -151,10 +151,16 @@
                     <div class="card shadow-sm border-0" style="border-radius: 10px; background-color: #FFFFFF;">
                         <div class="card-body">
                             <h6 style="color: #0B20E9; font-weight: bold;">Project Photo</h6>
-                            <a href="#" class="btn btn-outline-info btn-sm">Lihat Foto</a>
+                            @if($task->projects->photo)
+                               
+                                <a href="{{ Storage::url($task->projects->photo) }}" target="_blank" class="btn btn-outline-info btn-sm">Lihat Foto</a>
+                            @else
+                                <p class="text-muted">Tidak ada foto untuk proyek ini.</p>
+                            @endif
                         </div>
                     </div>
                 </div>
+
             </div>
         @else
             <p class="text-center">Tugas ini tidak terhubung dengan project dari klien.</p>
