@@ -51,10 +51,10 @@
                     <div class="form-section mb-5">
                         <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Roles Pengguna</h5>
                         <div class="form-group mb-4">
-                            <label for="jenis" style="font-weight: 600;">Roles</label>
-                            <select class="form-control shadow-sm" name="jenis" id="jenis" style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;" required>
+                            <label for="roles" style="font-weight: 600;">Roles</label>
+                            <select class="form-control shadow-sm" name="roles" id="roles" style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;" required>
                                 <option value="{{ $item->roles }}" selected>{{ $item->roles }}</option>
-                                <option value="USER">USER</option>
+                                <option value="KARYAWAN">KARYAWAN</option>
                                 <option value="ADMIN">ADMIN</option>
                             </select>
                         </div>

@@ -201,7 +201,7 @@
                     <div class="card1 shadow-sm border-0">
                         <div class="card-body">
                             <h6 style="color: #0B20E9; font-weight: bold;">Project Photo</h6>
-                            <a href="#" class="btn btn-outline-info btn-sm">Lihat Foto</a>
+                            <a href="{{ Storage::url($task->projects->photo) }}" target="_blank" class="btn btn-outline-info btn-sm">Lihat Foto</a>
                         </div>
                     </div>
                 </div>
