@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 //use Yajra\DataTables\Facades\DataTables;
 use Yajra\DataTables\DataTables;
@@ -103,6 +104,13 @@ class TaskController extends Controller
                 ]);
             }
         }
+
+        $this->kirimWaTask($task->user->phone, "Pemberitahuan Task Baru.
+        To {$task->user->name}
+        Title {$task->title}
+        Description {$task->description}"
+
+    );
 
 
         return redirect()->back()->with('success', 'Success create task with images');
@@ -203,6 +211,25 @@ class TaskController extends Controller
         $progress->save();
 
         return redirect()->back()->with('success', 'Success update progress task');
+    }
+
+    private function kirimWaTask($target, $message,){
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => env('FONNTE_API_KEY'),
+            ])->post('https://api.fonnte.com/send', [
+                'target' => $target,
+                'message' => $message,
+
+            ]);
+
+            $result = json_decode($response, true);
+            dd($result);
+
+        } catch (\Throwable $th) {
+           return response()->json(['error' => $th->getMessage()]);
+        }
+
     }
 
 }

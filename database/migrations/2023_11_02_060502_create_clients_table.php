@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->string('password');
             $table->longText('photo');
+            $table->string('phone')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

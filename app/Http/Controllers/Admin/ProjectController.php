@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Admin\ProjectRequest;
+use Illuminate\Support\Facades\Http;
 
 class ProjectController extends Controller
 {
@@ -83,6 +84,10 @@ class ProjectController extends Controller
         $data['photo'] = $request->file('photo')->store('assets/imgproject', 'public');
         Project::create($data);
 
+        $this->kirimWaClient($client->phone, 'Project anda telah dibuat dan segera dikerjakan oleh developer kami, mohon setia menunggu
+
+        sent by WebCare');
+
         return redirect()->route('client.project.index', $client->id);
     }
 
@@ -138,6 +143,14 @@ class ProjectController extends Controller
 
         $item->update($data);
 
+
+        if ($item->status == 'Completed') {
+            $this->kirimWaClient($item->client->phone, 'Project anda telah selesai, segera kunjungi website anda
+
+            sent by WebCare');
+
+        }
+
         return redirect()->back();
     }
 
@@ -152,5 +165,24 @@ class ProjectController extends Controller
         File::delete(public_path('storage/' . $project->photo));
         $project->delete();
         return redirect()->back()->with('success', 'Project deleted successfully');
+    }
+
+    private function kirimWaClient($target, $message,){
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => env('FONNTE_API_KEY'),
+            ])->post('https://api.fonnte.com/send', [
+                'target' => $target,
+                'message' => $message,
+
+            ]);
+
+            $result = json_decode($response, true);
+            dd($result);
+
+        } catch (\Throwable $th) {
+           return response()->json(['error' => $th->getMessage()]);
+        }
+
     }
 }

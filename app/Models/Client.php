@@ -15,7 +15,7 @@ class Client extends Model
 
 
     protected $fillable = [
-        'name', 'slug', 'password', 'photo',
+        'name', 'slug', 'password', 'photo', 'phone'
     ];
 
     protected $hidden = [];
