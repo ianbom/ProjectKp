@@ -292,12 +292,15 @@
                             <td>{{ \Carbon\Carbon::parse($progress->created_at)->format('d/m/Y H:i') }}</td>
                             <td>
                                 <div class="dropdown">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
                                         Actions
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                                        <li><a class="dropdown-item" href="{{ route('karyawan.progress.detail', $progress->id_progress_task) }}">Detail</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('karyawan.progress.edit', $progress->id_progress_task) }}">Edit</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('karyawan.progress.detail',
+                                        $progress->id_progress_task) }}">Detail</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('karyawan.progress.edit',
+                                        $progress->id_progress_task) }}">Edit</a></li>
                                     </ul>
                                 </div>
                             </td>

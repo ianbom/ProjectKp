@@ -14,7 +14,7 @@
         }
 
         .card {
-            background-color: #E8F0FE; /* Warna background card */
+            background-color: #E8F0FE;
             border-radius: 7px;
             box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -25,9 +25,15 @@
             box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
         }
 
+        .btn {
+            background-color: #0B20E9;
+            color: #FFFFFF;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
         .btn:hover {
-            background-color: #E8F0FE; /* Warna background button */
-            color: #0B20E9; /* Warna font button */
+            background-color: #E8F0FE;
+            color: #0B20E9;
             font-weight: 500;
             border: 2px solid #0B20E9;
             border-radius: 7px;
@@ -35,11 +41,7 @@
             transition: background-color 0.3s, box-shadow 0.3s;
         }
 
-        .btn {
-            background-color: #0B20E9; /* Warna hover button */
-            color: #FFFFFF;
-            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
-        }
+
 
         table {
             border-collapse: separate;
