@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\TutorialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AllProjectController;
+use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\TaskController;
 use App\Models\Project;
@@ -74,7 +75,12 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->namespace('Admin')->group
 
     Route::get('/user/editpassword/{id}', 'UserController@editpassword')->name('user-edit-password');
     Route::put('/user/editpassword/{id}', 'UserController@updatepassword')->name('user-edit-password');
+
+
 });
+
+Route::get('fullcalender', [FullCalenderController::class, 'index'])->name('calender');
+Route::post('fullcalenderAjax', [FullCalenderController::class, 'ajax']);
 
 Route::prefix('karyawan')->group(function (){
     Route::get('/', [KaryawanController::class, 'indexTask'])->name('karyawan.task.index');
@@ -88,5 +94,8 @@ Route::prefix('karyawan')->group(function (){
     Route::get('detail/progress/{id}', [TaskController::class, 'detailProgress'])->name('task.detail.progress');
 
 });
+
+
+
 
 Auth::routes();

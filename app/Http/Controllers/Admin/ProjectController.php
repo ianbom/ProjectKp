@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Admin\ProjectRequest;
+use App\Models\Event;
 use Illuminate\Support\Facades\Http;
 
 class ProjectController extends Controller
@@ -82,7 +83,13 @@ class ProjectController extends Controller
         $data['clients_id'] = $client->id;
 
         $data['photo'] = $request->file('photo')->store('assets/imgproject', 'public');
-        Project::create($data);
+        $project = Project::create($data);
+
+        Event::create([
+            'title' => $project->name,
+            'start' => $project->created_at,
+            'end' => $project->deadline
+        ]);
 
         $this->kirimWaClient($client->phone, 'Project anda telah dibuat dan segera dikerjakan oleh developer kami, mohon setia menunggu
 
@@ -178,7 +185,7 @@ class ProjectController extends Controller
             ]);
 
             $result = json_decode($response, true);
-            dd($result);
+            // dd($result);
 
         } catch (\Throwable $th) {
            return response()->json(['error' => $th->getMessage()]);
