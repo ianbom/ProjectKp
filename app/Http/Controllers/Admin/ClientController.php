@@ -26,7 +26,7 @@ class ClientController extends Controller
     {
         if (request()->ajax()) {
             $query = Client::query();
-            
+
             // $query = DB::table('clients')->get();
             return DataTables::of($query)
                 ->addColumn('action', function ($item) {
@@ -85,6 +85,7 @@ class ClientController extends Controller
         $data = $request->all();
         $data['photo'] = $request->file('photo')->store('assets/imgproject', 'public');
 
+        // dd($data);
         Client::create($data);
 
         return redirect()->route('client.index');

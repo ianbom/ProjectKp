@@ -45,6 +45,10 @@
                             <label for="email" style="font-weight: 600;">Email</label>
                             <input type="email" name="email" id="email" class="form-control shadow-sm" style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;" value="{{ $item->email }}" required>
                         </div>
+                        <div class="form-group mb-4">
+                            <label for="phone" style="font-weight: 600;">Nomor</label>
+                            <input type="phone" name="phone" id="phone" class="form-control shadow-sm" style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;" value="{{ $item->phone }}" required>
+                        </div>
                     </div>
 
                     <!-- Roles -->

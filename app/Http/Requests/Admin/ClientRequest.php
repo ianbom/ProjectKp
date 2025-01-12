@@ -28,6 +28,7 @@ class ClientRequest extends FormRequest
             'slug' => 'required|string',
             'password' => 'required|string',
             'photo' => 'image',
+            'phone' => 'required'
         ];
     }
 }

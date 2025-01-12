@@ -53,6 +53,13 @@
                                     style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
                                     placeholder="Masukkan slug" required>
                             </div>
+                            <div class="form-group mb-4">
+                                <label for="phone" style="font-weight: 600;">Nomor</label>
+                                <input type="text" name="phone" id="phone"
+                                    class="form-control shadow-sm"
+                                    style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
+                                    placeholder="Masukkan nomor whatsapp" required>
+                            </div>
                         </div>
 
                         <!-- Detail Keamanan -->

@@ -21,6 +21,10 @@ class Project extends Model
         'photo',
     ];
 
+    public function client(){
+        return $this->belongsTo(Client::class, 'clients_id', 'id');
+    }
+
 
     protected $hidden = [];
 }

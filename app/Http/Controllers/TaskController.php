@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 //use Yajra\DataTables\Facades\DataTables;
 use Yajra\DataTables\DataTables;
@@ -69,10 +70,8 @@ class TaskController extends Controller
         return view('pages.admin.task.create_task', ['projects' => $projects, 'user' => $user]);
     }
 
-    public function store(Request $request)
-{
+    public function store(Request $request){
     try {
-
         $request->validate([
             'id_projects' => 'nullable',
             'id' => 'required',
@@ -81,16 +80,12 @@ class TaskController extends Controller
             'image' => 'nullable|array',
             'image.*' => 'file|mimes:jpeg,png,jpg,pdf'
         ]);
-
-        // Buat task baru
         $task = Task::create([
             'id_projects' => $request->id_projects,
             'id' => $request->id,
             'title' => $request->title,
             'description' => $request->description,
         ]);
-
-
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $image) {
 
@@ -103,10 +98,12 @@ class TaskController extends Controller
                 ]);
             }
         }
-
-
+        $this->kirimWaTask($task->user->phone, "Pemberitahuan Task Baru.
+        To {$task->user->name}
+        Title {$task->title}
+        Description {$task->description}"
+    );
         return redirect()->back()->with('success', 'Success create task with images');
-
     } catch (\Throwable $th) {
         return response()->json(['error', $th->getMessage()]);
     }
@@ -203,6 +200,25 @@ class TaskController extends Controller
         $progress->save();
 
         return redirect()->back()->with('success', 'Success update progress task');
+    }
+
+    private function kirimWaTask($target, $message,){
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => env('FONNTE_API_KEY'),
+            ])->post('https://api.fonnte.com/send', [
+                'target' => $target,
+                'message' => $message,
+
+            ]);
+
+            $result = json_decode($response, true);
+            dd($result);
+
+        } catch (\Throwable $th) {
+           return response()->json(['error' => $th->getMessage()]);
+        }
+
     }
 
 }
