@@ -120,6 +120,18 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card shadow border-0 p-3" style="border-radius: 20px; max-width:90vw;">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
                 <div class="card-body">
                     <a href="{{ route('user.create') }}" class="btn mb-3">
                         + Tambah User Baru

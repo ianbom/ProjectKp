@@ -65,7 +65,7 @@ class KaryawanController extends Controller
                 }
             }
 
-            return redirect(url()->previous())->with('success', 'Berhasil Tersimpan');
+            return redirect()->route('karyawan.task.detail', $progress->id_task)->with('success', 'Progress created successfully');
 
         } catch (\Throwable $th) {
             return response()->json(['err' => $th->getMessage()]);
@@ -113,7 +113,7 @@ class KaryawanController extends Controller
                     ]);
                 }
             }
-            return redirect()->back()->with('success', 'Sukses ubah data');
+            return redirect()->route('karyawan.task.detail', $progress->id_task)->with('success', 'Progress updated successfully');
     } catch (\Exception $e) {
         return response()->json(['error' => $e->getMessage()]);
         }

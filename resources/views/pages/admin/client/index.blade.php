@@ -115,6 +115,17 @@
 
     <div class="row">
         <div class="col-md-12">
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="card shadow border-0 p-3">
                 <div class="card-body">
                     <a href="{{ route('client.create') }}" class="btn mb-3 px-4 py-2">

@@ -103,7 +103,7 @@ class TaskController extends Controller
         Title {$task->title}
         Description {$task->description}"
     );
-        return redirect()->back()->with('success', 'Success create task with images');
+        return redirect()->route('task.index')->with('success', 'Task created successfully');
     } catch (\Throwable $th) {
         return response()->json(['error', $th->getMessage()]);
     }
@@ -154,7 +154,7 @@ class TaskController extends Controller
             }
         }
 
-        return redirect()->back()->with('success', 'Success update task with images');
+        return redirect()->route('task.index')->with('success', 'Success update task with images');
 
     } catch (\Throwable $th) {
         return response()->json(['error' => $th->getMessage()]);
@@ -213,8 +213,7 @@ class TaskController extends Controller
             ]);
 
             $result = json_decode($response, true);
-            dd($result);
-
+         
         } catch (\Throwable $th) {
            return response()->json(['error' => $th->getMessage()]);
         }

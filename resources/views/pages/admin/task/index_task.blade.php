@@ -114,6 +114,17 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card shadow border-0 p-3">
+                @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
                 <div class="card-body">
 
                     <a href="{{ route('task.create') }}" class="btn mb-3">

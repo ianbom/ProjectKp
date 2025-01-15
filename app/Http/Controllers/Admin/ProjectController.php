@@ -95,7 +95,7 @@ class ProjectController extends Controller
 
         sent by WebCare');
 
-        return redirect()->route('client.project.index', $client->id);
+        return redirect()->route('client.project.index', $client->id)->with('success', 'Project created successfully');
     }
 
     /**
@@ -158,7 +158,7 @@ class ProjectController extends Controller
 
         }
 
-        return redirect()->back();
+        return redirect()->route('client.project.index', $project->clients_id)->with('success', 'Project updated successfully');
     }
 
     /**

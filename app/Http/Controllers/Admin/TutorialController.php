@@ -138,7 +138,7 @@ class TutorialController extends Controller
             'link' => $request->link,
         ]);
 
-        return redirect()->route('tutorial.index');
+        return redirect()->route('tutorial.index')->with('success', 'Tutorial created successfully');
     }
 
     /**
@@ -213,7 +213,7 @@ class TutorialController extends Controller
 
         $item->update([
             'author' => $request->author,
-            'title' => $request->snippet->title,
+            'title' => $video->snippet->title,
             'description' => $video->snippet->description,
             'url_thumbnail' => $video->snippet->thumbnails->high->url,
             'embed_html' => $video->player->embedHtml,
@@ -223,7 +223,7 @@ class TutorialController extends Controller
         ]);
 
 
-        return redirect()->route('tutorial.index');
+        return redirect()->route('tutorial.index')->with('success', 'Tutorial updated successfully');
     }
 
     /**

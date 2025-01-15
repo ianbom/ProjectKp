@@ -96,7 +96,7 @@ class UserController extends Controller
         $data['password'] = Hash::make($request->password);
         User::create($data);
 
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success', 'User created successfully');
     }
 
     /**
@@ -136,7 +136,6 @@ class UserController extends Controller
     {
         $item = User::findOrFail($id);
 
-
         return view('pages.admin.user.editpassword', [
             'item' => $item
         ]);
@@ -171,7 +170,7 @@ class UserController extends Controller
 
         $item->update($data);
 
-        return redirect()->route('user.index');
+        return redirect()->route('user.index')->with('success', 'User updated successfully');
     }
 
     /**

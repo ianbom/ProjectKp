@@ -88,7 +88,7 @@ class ClientController extends Controller
         // dd($data);
         Client::create($data);
 
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')->with('success', 'Client created successfully');
     }
 
     /**
@@ -143,7 +143,7 @@ class ClientController extends Controller
 
         $item->update($data);
 
-        return redirect()->route('client.index');
+        return redirect()->route('client.index')->with('success', 'Client updated successfully');
     }
 
     /**

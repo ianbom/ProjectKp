@@ -7,13 +7,15 @@
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-10">
-            @if ($errors->any())
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
                 <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                    {{ session('error') }}
                 </div>
             @endif
 

@@ -119,6 +119,17 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card shadow border-0 p-4">
+                @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
                 <div class="card-body">
                     <!-- Tombol Tambah Video -->
                     <div class="mb-4">

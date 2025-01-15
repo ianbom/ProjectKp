@@ -11,6 +11,7 @@
         </div>
 
         <div class="card-body p-5">
+            
             @if (session('success'))
                 <div class="alert alert-success">
                     {{ session('success') }}

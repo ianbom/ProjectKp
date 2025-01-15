@@ -35,7 +35,7 @@
                                 class="logo-dashboard">
                             <span>
                                 <p class="title-dashboard my-auto" style="color: white;">
-                                    Client Portal
+                                    Admin Portal
                                 </p>
                             </span>
                         </a>
@@ -122,16 +122,15 @@
                         </a>
 
                         <a href="{{ route('calender') }}"
-                            class="dashboard-nav-item {{ request()->is('admin/fullcalender*') ? 'active-item' : '' }}">
-                            <svg class="menu-icon menu-icon-normal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.89 2 1.99 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM12 17h-2v-2h2v2zm4-4H8V7h8v6z"/>
-                              </svg>
+    class="dashboard-nav-item {{ request()->is('admin/fullcalender*') ? 'active-item' : '' }}">
+    <svg class="menu-icon menu-icon-normal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+        <path fill-rule="evenodd" d="M6.25 3.5a.75.75 0 00-1.5 0v.75H4A2.25 2.25 0 001.75 6.5v13A2.25 2.25 0 004 21.75h16A2.25 2.25 0 0022.25 19.5v-13A2.25 2.25 0 0020 4.25h-.75V3.5a.75.75 0 00-1.5 0v.75h-11.5V3.5zm0 2.25H4c-.414 0-.75.336-.75.75v2.25h18V6.5c0-.414-.336-.75-.75-.75h-2.25v.75a.75.75 0 01-1.5 0v-.75h-11.5v.75a.75.75 0 01-1.5 0v-.75zm13.5 3.75h-15v10.5c0 .414.336.75.75.75h13.5c.414 0 .75-.336.75-.75V9.5z" clip-rule="evenodd" />
+    </svg>
+    <p class="menu-font ml-1 my-auto {{ request()->is('admin/fullcalender*') ? 'active-menu' : '' }}">
+        Calendar
+    </p>
+</a>
 
-                            <p class="menu-font ml-1 my-auto {{ request()->is('admin/fullcalender*') ? 'active-menu' : '' }}">
-                                Calender
-
-                            </p>
-                        </a>
 
 
                         {{-- <div class="nav-item-divider" style="margin-top: 40vh;"></div> --}}
