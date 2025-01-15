@@ -15,13 +15,23 @@
     <style>
         /* General Styling */
 
-        .container {
-            background-color: #00000000;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding-top: auto ;
-            max-width: 1500px;
+        body {
+            background: linear-gradient(to bottom right, #CED2FB, #E8E9FF);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
 
+        .card {
+            background-color: #E8F0FE;
+            border-radius: 7px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.2);
         }
 
         h1 {
@@ -37,7 +47,7 @@
         /* Calendar Container */
         #calendar {
             padding: 20px;
-            background: #ffffff;
+            background: #E8F0FE;
             border-radius: 15px;
         }
 
@@ -98,13 +108,13 @@
 
         /* Today Highlight */
         .fc-today {
-            background-color: #63f56a !important;
+            background-color: #CED2FB !important;
             border: 2px solid #2196f3 !important;
         }
 
         /* Events Styling */
         .fc-event {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%) !important;
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 50%) !important;
             border: none !important;
             border-radius: 5px !important;
             padding: 5px 8px !important;
@@ -128,9 +138,8 @@
 
         /* Toastr Customization */
         .toast-success {
-            background-color: #4CAF50 !important;
+            background-color: #0B20E9 !important;
             border-radius: 8px !important;
-            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3) !important;
         }
 
         /* Responsive Adjustments */
@@ -155,11 +164,11 @@
         }
     </style>
 
-    <div class="container ">
-        <h1>Webcare Event Calendar </h1>
+<div class="container ">
+    <div class="card">
         <div id='calendar'></div>
     </div>
-
+</div>
     <script>
     $(document).ready(function () {
         var SITEURL = "{{ url('/') }}";

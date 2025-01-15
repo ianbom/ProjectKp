@@ -122,7 +122,7 @@
         <div class="col-md-12">
             <div class="card shadow border-0 p-3">
                 <div class="card-body">
-                   
+
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered" id="projects-table">
                             <thead>
@@ -130,11 +130,9 @@
                                     <th class="text-center">ID</th>
                                     <th class="text-center">Name</th>
                                     <th class="text-center">Type</th>
-                                    <th class="text-center">Description</th>
                                     <th class="text-center">Deadline</th>
                                     <th class="text-center">Status</th>
                                     <th class="text-center">Active Until</th>
-                                    <th class="text-center">Notes</th>
                                     <th class="text-center">Photo</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
@@ -166,11 +164,9 @@ $(document).ready(function() {
             { data: 'id', name: 'id' },
             { data: 'name', name: 'name' },
             { data: 'jenis', name: 'jenis' },
-            { data: 'keterangan', name: 'keterangan' },
             { data: 'deadline', name: 'deadline' },
             { data: 'status', name: 'status' },
             { data: 'masaaktif', name: 'masaaktif' },
-            { data: 'notes', name: 'notes' },
             { data: 'photo', name: 'photo', orderable: false, searchable: false },
             { data: 'action', name: 'action', orderable: false, searchable: false }
         ]

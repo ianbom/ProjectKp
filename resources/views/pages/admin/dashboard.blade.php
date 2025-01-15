@@ -68,7 +68,7 @@
                             <div class="col-8 col-sm-12 col-xl-8 my-auto">
                                 <div class="d-flex d-sm-block d-md-flex align-items-center">
                                     <img src="/images/dashboard/admin.svg" alt="client" class="logo-row">
-                                    <h5 class="ml-3 my-auto" style="color: #FC424A;">Admin</h5>
+                                    <h5 class="ml-3 my-auto" style="color: #FC424A;">User</h5>
                                 </div>
                             </div>
                             <div class="col-4 my-auto">
