@@ -7,6 +7,7 @@ use App\Models\ProgressTask;
 use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
@@ -19,47 +20,54 @@ class TaskController extends Controller
         return view('pages.admin.task.index_task');
     }
 
-    public function dataTask() {
-        $data = Task::with(['user', 'projects'])
-            ->select('task.*')
-            ->join('users', 'task.id', '=', 'users.id')
-            ->leftJoin('projects', 'task.id_projects', '=', 'projects.id')
-            ->get();
+    public function dataTask()
+{
+    $data = Task::with(['user', 'projects'])
+        ->select('task.*')
+        ->join('users', 'task.id', '=', 'users.id')
+        ->leftJoin('projects', 'task.id_projects', '=', 'projects.id')
+        ->get();
 
-        return DataTables::of($data)
-            ->addColumn('user_name', function ($data) {
-                return $data->user->name;
-            })
-            ->addColumn('project_name', function ($data) {
-                return $data->projects ? $data->projects->name : 'No Project';
-            })
-            ->addColumn('action', function ($data) {
-                $deleteUrl = route('task.delete', $data->id_task);
-                $editUrl = route('task.edit', $data->id_task);
-                $detailUrl = route('task.detail', $data->id_task);
+    return DataTables::of($data)
+        ->addColumn('user_name', function ($data) {
+            return $data->user->name;
+        })
+        ->addColumn('project_name', function ($data) {
+            return $data->projects ? $data->projects->name : 'No Project';
+        })
+        ->editColumn('created_at', function ($data) {
+            return Carbon::parse($data->created_at)->translatedFormat('d F Y');
+        })
+        ->editColumn('updated_at', function ($data) {
+            return Carbon::parse($data->updated_at)->translatedFormat('d F Y');
+        })
+        ->addColumn('action', function ($data) {
+            $deleteUrl = route('task.delete', $data->id_task);
+            $editUrl = route('task.edit', $data->id_task);
+            $detailUrl = route('task.detail', $data->id_task);
 
-                return '
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            Actions
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="' . $detailUrl . '">Detail</a></li>
-                            <li><a class="dropdown-item" href="' . $editUrl . '">Edit</a></li>
-                            <li>
-                                <form action="' . $deleteUrl . '" method="POST" onsubmit="return confirm(\'Are you sure you want to delete this task?\');" style="display:inline;">
-                                    ' . csrf_field() . '
-                                    ' . method_field('DELETE') . '
-                                    <button type="submit" class="dropdown-item text-danger">Delete</button>
-                                </form>
-                            </li>
-                        </ul>
-                    </div>
-                ';
-            })
-            ->rawColumns(['action'])
-            ->make(true);
-    }
+            return '
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        Actions
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li><a class="dropdown-item" href="' . $detailUrl . '">Detail</a></li>
+                        <li><a class="dropdown-item" href="' . $editUrl . '">Edit</a></li>
+                        <li>
+                            <form action="' . $deleteUrl . '" method="POST" onsubmit="return confirm(\'Are you sure you want to delete this task?\');" style="display:inline;">
+                                ' . csrf_field() . '
+                                ' . method_field('DELETE') . '
+                                <button type="submit" class="dropdown-item text-danger">Delete</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            ';
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+}
 
 
 
@@ -213,7 +221,7 @@ class TaskController extends Controller
             ]);
 
             $result = json_decode($response, true);
-         
+
         } catch (\Throwable $th) {
            return response()->json(['error' => $th->getMessage()]);
         }

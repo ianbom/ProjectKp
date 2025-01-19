@@ -87,7 +87,7 @@
                 <p class="text-center">Tidak ada task untuk ditampilkan.</p>
             @else
                 <div class="table-responsive">
-                    <table class="table table-bordered table-hover">
+                    <table id="table-1" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>ID Task</th>
@@ -105,7 +105,7 @@
                                     <td>{{ $item->projects->name ?? 'No Project Assigned' }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ $item->description }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->created_at)->format('j F Y') }}</td>
                                     <td>
                                         <a href="{{ route('karyawan.task.detail', $item->id_task) }}" class="btn btn-success">Detail</a>
                                     </td>
@@ -118,4 +118,25 @@
         </div>
     </div>
 </div>
+
+{{-- <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.bootstrap5.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/fixedheader/3.3.1/js/dataTables.fixedHeader.min.js"></script> --}}
+
+
+
 @endsection
+
+@push('addon-script')
+<script>
+    $(document).ready(function() {
+           $('#table-1').DataTable({
+               responsive: true,
+           });
+       });
+</script>
+@endpush
+

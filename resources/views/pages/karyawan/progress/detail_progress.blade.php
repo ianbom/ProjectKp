@@ -113,7 +113,7 @@
                     <div class="card shadow-sm border-0" style="border-radius: 10px; background-color: #FFFFFF;">
                         <div class="card-body">
                             <h6 style="color: #0B20E9; font-weight: bold;">Created At</h6>
-                            <p>{{ \Carbon\Carbon::parse($progress->created_at)->format('d/m/Y H:i') }}</p>
+                            <p>{{ \Carbon\Carbon::parse($progress->created_at)->format('j F Y') }}</p>
                         </div>
                     </div>
                 </div>

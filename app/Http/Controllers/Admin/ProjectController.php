@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Admin\ProjectRequest;
 use App\Models\Event;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 
 class ProjectController extends Controller
@@ -20,28 +21,36 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Client $client)
-    {
-        if (request()->ajax()) {
-            $query = Project::query()->where('clients_id', $client->id);
 
+public function index(Client $client)
+{
+    if (request()->ajax()) {
+        $query = Project::query()
+            ->where('clients_id', $client->id)
+            ->select([
+                'id',
+                'name',
+                'jenis',
+                'deadline',
+                'status'
+            ]);
 
-            // $query = DB::table('clients')->get();
-            return DataTables::of($query)
-                ->addColumn('action', function ($item) {
-                    return '
-
+        return DataTables::of($query)
+            ->editColumn('deadline', function ($item) {
+                return Carbon::parse($item->deadline)->translatedFormat('j F Y');
+            })
+            ->addColumn('action', function ($item) {
+                return '
                     <div class="btn-group">
-
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle mr-1 mb-1" type="button" data-toggle="dropdown">
                                 Aksi
                             </button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href=" ' . route('project.edit', $item->id) . ' ">
+                                <a class="dropdown-item" href="' . route('project.edit', $item->id) . '">
                                     Edit
                                 </a>
-                                <form action=" ' . route('project.destroy', $item->id) . ' " method="POST">
+                                <form action="' . route('project.destroy', $item->id) . '" method="POST">
                                     ' . method_field('delete') . csrf_field() . '
                                     <button type="submit" class="dropdown-item text-danger">
                                         Delete
@@ -51,14 +60,14 @@ class ProjectController extends Controller
                         </div>
                     </div>
                 ';
-                })
-                ->rawColumns(['action'])
-                ->make();
-        }
-
-
-        return view('pages.admin.project.index', compact('client'));
+            })
+            ->rawColumns(['action'])
+            ->make();
     }
+
+    return view('pages.admin.project.index', compact('client'));
+}
+
 
     /**
      * Show the form for creating a new resource.

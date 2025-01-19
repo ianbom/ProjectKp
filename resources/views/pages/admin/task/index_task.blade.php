@@ -161,33 +161,22 @@
 <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
 
 <script>
-    $(document).ready(function() {
-        $('#taskTable').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('data.task') }}",
-            columns: [
-                { data: 'id_task', name: 'id_task' },
-                { data: 'project_name', name: 'project_name' },
-                { data: 'user_name', name: 'user_name' },
-                { data: 'title', name: 'title' },
-                { data: 'description', name: 'description' },
-                {
-                    data: 'created_at',
-                    name: 'created_at',
-                    render: function(data) {
-                        return new Date(data).toLocaleString();
-                    }
-                },
-                {
-                    data: 'updated_at',
-                    name: 'updated_at',
-                    render: function(data) {
-                        return new Date(data).toLocaleString();
-                    }
-                },
-                { data: 'action', name: 'action', orderable: false, searchable: false }
-            ]
-        });
+  $(document).ready(function() {
+    $('#taskTable').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "{{ route('data.task') }}",
+        columns: [
+            { data: 'id_task', name: 'id_task' },
+            { data: 'project_name', name: 'project_name' },
+            { data: 'user_name', name: 'user_name' },
+            { data: 'title', name: 'title' },
+            { data: 'description', name: 'description' },
+            { data: 'created_at', name: 'created_at' },
+            { data: 'updated_at', name: 'updated_at' }, 
+            { data: 'action', name: 'action', orderable: false, searchable: false }
+        ]
     });
+});
+
 </script>

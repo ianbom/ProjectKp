@@ -133,7 +133,7 @@
                     {{ session('error') }}
                 </div>
             @endif
-            
+
             <h6 class=" mb-4" style="color: #0B20E9; font-weight:600;">Informasi Project</h6>
 
             @if ($task->projects)
@@ -173,7 +173,7 @@
                     <div class="card1 shadow-sm border-0">
                         <div class="card-body">
                             <h6 style="color: #0B20E9; font-weight: bold;">Deadline</h6>
-                            <p>{{ \Carbon\Carbon::parse($task->projects->deadline)->format('d/m/Y H:i') }}</p>
+                            <p>{{ \Carbon\Carbon::parse($task->projects->deadline)->format('j F Y') }}</p>
                         </div>
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                     <div class="card1 shadow-sm border-0">
                         <div class="card-body">
                             <h6 style="color: #0B20E9; font-weight: bold;">Masa Aktif</h6>
-                            <p>{{ \Carbon\Carbon::parse($task->projects->masaaktif)->format('d/m/Y H:i') }}</p>
+                            <p>{{ \Carbon\Carbon::parse($task->projects->masaaktif)->format('j F Y') }}</p>
                         </div>
                     </div>
                 </div>
@@ -254,7 +254,7 @@
                     <div class="card1 shadow-sm border-0">
                         <div class="card-body">
                             <h6 style="color: #0B20E9; font-weight: bold;">Created At</h6>
-                            <p>{{ \Carbon\Carbon::parse($task->created_at)->format('d/m/Y H:i') }}</p>
+                            <p>{{ \Carbon\Carbon::parse($task->created_at)->format('j F Y') }}</p>
                         </div>
                     </div>
                 </div>
@@ -301,7 +301,7 @@
                             <td>{{ $progress->deskripsi }}</td>
                             <td>{{ $progress->status }}</td>
                             <td>{{ $progress->comment ?? 'N/A' }}</td>
-                            <td>{{ \Carbon\Carbon::parse($progress->created_at)->format('d/m/Y H:i') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($progress->created_at)->format('j F Y') }}</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"

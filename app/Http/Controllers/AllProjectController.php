@@ -16,7 +16,20 @@ class AllProjectController extends Controller
     }
     public function dataProjects()
 {
-    $projects = Project::select(['id', 'clients_id', 'name', 'jenis', 'keterangan', 'deadline', 'status', 'masaaktif', 'notes', 'photo', 'created_at', 'updated_at']);
+    $projects = Project::select([
+        'id',
+        'clients_id',
+        'name',
+        'jenis',
+        'keterangan',
+        'deadline',
+        'status',
+        'masaaktif',
+        'notes',
+        'photo',
+        'created_at',
+        'updated_at'
+    ]);
 
     return DataTables::of($projects)
         ->addColumn('action', function ($project) {
@@ -44,9 +57,16 @@ class AllProjectController extends Controller
         ->editColumn('photo', function ($project) {
             return '<img src="'.Storage::url($project->photo).'" alt="Project Photo" width="50">';
         })
+        ->editColumn('deadline', function ($project) {
+            return \Carbon\Carbon::parse($project->deadline)->translatedFormat('j F Y');
+        })
+        ->editColumn('masaaktif', function ($project) {
+            return \Carbon\Carbon::parse($project->masaaktif)->translatedFormat('j F Y');
+        })
         ->rawColumns(['action', 'photo'])
         ->make(true);
 }
+
 
 
     // public function dataProjects()
