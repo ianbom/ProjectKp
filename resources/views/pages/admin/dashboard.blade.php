@@ -118,8 +118,8 @@
                         <div class="p-3 d-flex flex-column" style="border-bottom: 1px solid #0B20E9; margin-bottom: 10px;">
                             <div class="d-flex justify-content-between">
                                 <div class="font-weight-bold">
-                                    <div class="text-truncate text-wrap">{{ $noti->guest_name }} has commented on
-                                        {{ $noti->name }} project
+                                    <div class="text-truncate text-wrap">{{ $noti->guest_name }} has commented
+
                                     </div>
                                     <div class="text-truncate font-weight-normal text-wrap">{{ $noti->comment }}</div>
                                 </div>
