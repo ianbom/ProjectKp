@@ -114,7 +114,7 @@
 
         /* Events Styling */
         .fc-event {
-            background: linear-gradient(135deg, #4CAF50 0%, #45a049 50%) !important;
+            background: linear-gradient(135deg, #0B20E9 0%, #0B20E9 50%) !important;
             border: none !important;
             border-radius: 5px !important;
             padding: 5px 8px !important;

@@ -173,7 +173,7 @@ class TaskController extends Controller
     public function delete($id){
         $task = Task::findOrFail($id);
         $task->delete();
-        return redirect()->back()->with('success', 'Success hapus task');
+        return redirect()->back()->with('success', 'Task Deleted successfully');
     }
 
     public function deleteImage($id){
