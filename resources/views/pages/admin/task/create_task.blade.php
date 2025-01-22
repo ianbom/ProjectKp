@@ -2,11 +2,10 @@
 
 @section('title', 'Create Task')
 
+
 @section('content')
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-</head>
+
+
 
 <div class="row justify-content-center">
     <div class="col-md-10">
@@ -44,7 +43,7 @@
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Pilih Project (Opsional)</h6>
                         <div class="form-group mb-4">
                             <label for="id_projects" style="font-weight: 600;">Project</label>
-                            <select name="id_projects" id="id_projects" class="form-control shadow-sm select2"
+                            <select name="id_projects" id="id_projects" class="js-example-basic-single form-control shadow-sm"
                                 style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;">
                                 <option value="">Tidak Ada</option>
                                 @foreach($projects as $project)
@@ -63,12 +62,12 @@
 
                     <div class="form-group mb-4">
                         <label for="id" style="font-weight: 600;">Pilih Pengguna</label>
-                        <select name="id" id="id" class="form-control shadow-sm select2"
+                        <select name="user" class="js-example-basic-single form-control shadow-sm"
                             style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
                             <option value="">Pilih Pengguna</option>
                             @foreach($user as $u)
-                            <option value="{{ $u->id }}">{{ $u->id }}-{{ $u->name }}</option>
-                        @endforeach
+                                <option value="{{ $u->id }}">{{ $u->id }} - {{ $u->name }}</option>
+                            @endforeach
                         </select>
                     </div>
 
@@ -137,5 +136,20 @@
         }
     });
     </script>
+
+
+
+@push('addon-script')
+
+
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2({
+            placeholder: "Pilih Pengguna",
+            allowClear: true
+        });
+    });
+</script>
+@endpush
 
 @endsection
