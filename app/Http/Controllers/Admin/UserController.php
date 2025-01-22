@@ -223,6 +223,6 @@ class UserController extends Controller
 
         $item->delete();
         // $projectdelete->delete();
-        return redirect()->route('user.index');
+        return redirect()->route('user.index') ->with('success', 'User Deleted successfully');
     }
 }

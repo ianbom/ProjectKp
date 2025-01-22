@@ -164,6 +164,7 @@
             processing: true,
             serverSide: true,
             ordering: true,
+            order: [[0, 'desc']],
             ajax: {
                 url: '{!! url()->current() !!}',
             },

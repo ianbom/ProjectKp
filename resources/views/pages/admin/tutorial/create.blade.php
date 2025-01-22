@@ -47,6 +47,8 @@
                                     class="form-control shadow-sm"
                                     style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
                                     required>
+                                    <small class="form-text text-muted" style="margin-top: 5px;">Author bisa diganti sesuai kebutuhan </small>
+
                             </div>
                             <div class="form-group mb-4">
                                 <label for="link" style="font-weight: 600;">Tautan YouTube</label>
@@ -54,6 +56,7 @@
                                     class="form-control shadow-sm"
                                     style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
                                     placeholder="Link harus berformat: https://www.youtube.com/watch?v=QOHOp_Aph68" required>
+
                             </div>
                         </div>
 

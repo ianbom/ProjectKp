@@ -24,8 +24,9 @@ class TaskController extends Controller
 {
     $data = Task::with(['user', 'projects'])
         ->select('task.*')
-        ->join('users', 'task.id', '=', 'users.id')
+        ->join('users', 'task.id', '=', second: 'users.id')
         ->leftJoin('projects', 'task.id_projects', '=', 'projects.id')
+        ->orderBy('task.created_at', 'desc')
         ->get();
 
     return DataTables::of($data)

@@ -164,6 +164,6 @@ class ClientController extends Controller
 
         $item->delete();
         $projectdelete->delete();
-        return redirect()->route('client.index');
+        return redirect()->route('client.index') ->with('success', 'Client Deleted successfully');
     }
 }

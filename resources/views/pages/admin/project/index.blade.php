@@ -112,7 +112,7 @@
             @endif
                 <div class="card-body">
                     <a href="{{ route('client.project.create', $client->id) }}" class="btn btn-primary mb-3" style="background-color: #0B20E9; color: white; border-radius: 7px;">
-                        + Tambah Project Baru
+                        + Tambah Project Baru <strong>(Klien {{ $client->name }})
                     </a>
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered" id="crudTable">
@@ -142,6 +142,7 @@
                 processing: true,
                 serverSide: true,
                 ordering: true,
+            order: [[0, 'desc']],
                 ajax: {
                     url: '{!! url()->current() !!}',
                 },

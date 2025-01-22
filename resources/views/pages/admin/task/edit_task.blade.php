@@ -95,6 +95,7 @@
                             <small class="text-muted">Anda dapat mengunggah beberapa gambar. Format yang diperbolehkan: jpeg, png, jpg, pdf.</small>
                         </div>
                     </div>
+                    
 
                     <!-- Action Buttons -->
                     <div class="text-right mt-5">
@@ -176,5 +177,29 @@
         padding-top: 20px;
     }
 </style>
+<script>
+    document.getElementById('image').addEventListener('change', function(event) {
+        const files = event.target.files;
+        const maxSize = 3 * 1024 * 1024; // 3 MB
+        const allowedExtensions = ['jpg', 'jpeg', 'png', 'pdf'];
+        let isValid = true;
 
+        for (let file of files) {
+            const fileExtension = file.name.split('.').pop().toLowerCase();
+            if (!allowedExtensions.includes(fileExtension)) {
+                alert(`Format file ${file.name} tidak didukung. Hanya JPG, PNG, dan PDF yang diizinkan.`);
+                isValid = false;
+            }
+
+            if (file.size > maxSize) {
+                alert(`Ukuran file ${file.name} melebihi 3 MB.`);
+                isValid = false;
+            }
+        }
+
+        if (!isValid) {
+            event.target.value = ''; // Reset input file jika ada file tidak valid
+        }
+    });
+    </script>
 @endsection

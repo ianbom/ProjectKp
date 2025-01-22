@@ -47,10 +47,12 @@
                     </div>
                     <div class="form-group mb-4">
                         <label for="phone" style="font-weight: 600;">Nomor</label>
-                        <input type="number" name="phone" id="phone" class="form-control shadow-sm"
-                            style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
-                            value="{{ $item->phone }}" required>
+                        <input type="text" name="phone" id="phone"
+                            class="form-control shadow-sm"
+                            style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
+                            value="{{ $item->phone }}" maxlength="12" pattern="\d*" required>
                     </div>
+                  
                 </div>
 
                 <!-- Detail Keamanan -->
@@ -58,9 +60,21 @@
                     <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Detail Keamanan</h6>
                     <div class="form-group mb-4">
                         <label for="password" style="font-weight: 600;">Kata Sandi</label>
-                        <input type="text" name="password" id="password" class="form-control shadow-sm"
-                            style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
-                            value="{{ $item->password }}" required>
+                        <div style="position: relative;">
+                            <input type="password" name="password" id="password" autocomplete="new-password"
+                                class="form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; padding-right: 35px; background-color: #f5f8fd;"
+                               value="{{ $item->password }}" required
+
+                                title="Password harus mengandung minimal 8 karakter, termasuk huruf besar dan angka">
+                            <!-- Ikon mata -->
+                            <span class="toggle-password" onclick="togglePasswordVisibility()"
+                                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                <i id="eyeIcon" class="fa fa-eye-slash" style="color: #0B20E9;"></i>
+                            </span>
+                        </div>
+                        <small class="form-text text-muted" style="margin-top: 5px;">Password harus mengandung minimal 8 karakter, termasuk huruf besar dan angka</small>
+
                     </div>
                 </div>
 
@@ -126,4 +140,47 @@
         border-radius: 2px;
     }
 </style>
+
+<script>
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById("password");
+        const eyeIcon = document.getElementById("eyeIcon");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        }
+    }
+    function validateFile() {
+        const fileInput = document.getElementById('photo');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const allowedExtensions = ['image/jpeg', 'image/png'];
+            const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+
+            // Validasi format file
+            if (!allowedExtensions.includes(file.type)) {
+                alert('Format file tidak didukung. Harap unggah file dalam format JPG atau PNG.');
+                fileInput.value = ''; // Reset input file
+                return;
+            }
+
+            // Validasi ukuran file
+            if (file.size > maxSize) {
+                alert('Ukuran file terlalu besar. Pastikan ukuran gambar tidak lebih dari 2MB.');
+                fileInput.value = ''; // Reset input file
+            }
+        }
+        }
+        document.getElementById('phone').addEventListener('input', function (e) {
+    const value = e.target.value;
+    if (value.length > 12) {
+        e.target.value = value.slice(0, 12);
+    }
+</script>
 @endsection

@@ -41,13 +41,20 @@
                             <label for="name" style="font-weight: 600;">Nama Pengguna</label>
                             <input type="text" name="name" id="name" class="form-control shadow-sm" style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;" value="{{ $item->name }}" required>
                         </div>
+
                         <div class="form-group mb-4">
                             <label for="email" style="font-weight: 600;">Email</label>
-                            <input type="email" name="email" id="email" class="form-control shadow-sm" style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;" value="{{ $item->email }}" required>
+                            <input type="email" name="email" id="email"
+                                class="form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}" value="{{ $item->email }}" required>
                         </div>
                         <div class="form-group mb-4">
                             <label for="phone" style="font-weight: 600;">Nomor</label>
-                            <input type="phone" name="phone" id="phone" class="form-control shadow-sm" style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;" value="{{ $item->phone }}" required>
+                            <input type="text" name="phone" id="phone"
+                                class="form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
+                                value="{{ $item->phone }}"  maxlength="12" pattern="\d*" required>
                         </div>
                     </div>
 
@@ -66,10 +73,15 @@
 
                     <!-- Gambar Profil -->
                     <div class="form-section mb-5">
-                        <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Gambar Profil</h5>
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Gambar Profil</h6>
                         <div class="form-group mb-4">
-                            <label for="photo" style="font-weight: 600;">Foto Profil</label>
-                            <input type="file" name="photo" id="photo" class="form-control shadow-sm" style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;">
+                            <label for="photo" style="font-weight: 600;">Foto Profil Pengguna</label>
+                            <input type="file" name="photo" id="photo"
+                                class="form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
+                                accept=".jpg, .jpeg, .png"
+                                onchange="validateFile()" required>
+                            <small class="form-text text-muted" style="margin-top: 5px;">Format yang didukung: JPG, PNG. Pastikan ukuran gambar tidak lebih dari 2MB</small>
                             <img src="{{ Storage::url($item->photo) }}" height="250px" width="200" style="object-fit: contain; margin-top: 15px;">
                         </div>
                     </div>
@@ -146,4 +158,43 @@
         padding-top: 20px;
     }
 </style>
+<script>
+    document.getElementById('email').addEventListener('input', function (e) {
+    const emailPattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+    const emailInput = e.target.value;
+    if (!emailPattern.test(emailInput)) {
+        e.target.setCustomValidity('Masukkan format email yang valid, seperti nama@example.com');
+    } else {
+        e.target.setCustomValidity('');
+    }
+});
+document.getElementById('phone').addEventListener('input', function (e) {
+    const value = e.target.value;
+    if (value.length > 12) {
+        e.target.value = value.slice(0, 12);
+    }
+    });
+    function validateFile() {
+        const fileInput = document.getElementById('photo');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const allowedExtensions = ['image/jpeg', 'image/png'];
+            const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+
+            // Validasi format file
+            if (!allowedExtensions.includes(file.type)) {
+                alert('Format file tidak didukung. Harap unggah file dalam format JPG atau PNG.');
+                fileInput.value = ''; // Reset input file
+                return;
+            }
+
+            // Validasi ukuran file
+            if (file.size > maxSize) {
+                alert('Ukuran file terlalu besar. Pastikan ukuran gambar tidak lebih dari 2MB.');
+                fileInput.value = ''; // Reset input file
+            }
+        }
+    }
+</script>
 @endsection
