@@ -122,14 +122,14 @@
                         </a>
 
                         <a href="{{ route('calender') }}"
-    class="dashboard-nav-item {{ request()->is('admin/fullcalender*') ? 'active-item' : '' }}">
-    <svg class="menu-icon menu-icon-normal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-        <path fill-rule="evenodd" d="M6.25 3.5a.75.75 0 00-1.5 0v.75H4A2.25 2.25 0 001.75 6.5v13A2.25 2.25 0 004 21.75h16A2.25 2.25 0 0022.25 19.5v-13A2.25 2.25 0 0020 4.25h-.75V3.5a.75.75 0 00-1.5 0v.75h-11.5V3.5zm0 2.25H4c-.414 0-.75.336-.75.75v2.25h18V6.5c0-.414-.336-.75-.75-.75h-2.25v.75a.75.75 0 01-1.5 0v-.75h-11.5v.75a.75.75 0 01-1.5 0v-.75zm13.5 3.75h-15v10.5c0 .414.336.75.75.75h13.5c.414 0 .75-.336.75-.75V9.5z" clip-rule="evenodd" />
-    </svg>
-    <p class="menu-font ml-1 my-auto {{ request()->is('admin/fullcalender*') ? 'active-menu' : '' }}">
-        Calendar
-    </p>
-</a>
+                            class="dashboard-nav-item {{ request()->is('fullcalender*') ? 'active-item' : '' }}">
+                            <svg class="menu-icon menu-icon-normal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path fill-rule="evenodd" d="M6.25 3.5a.75.75 0 00-1.5 0v.75H4A2.25 2.25 0 001.75 6.5v13A2.25 2.25 0 004 21.75h16A2.25 2.25 0 0022.25 19.5v-13A2.25 2.25 0 0020 4.25h-.75V3.5a.75.75 0 00-1.5 0v.75h-11.5V3.5zm0 2.25H4c-.414 0-.75.336-.75.75v2.25h18V6.5c0-.414-.336-.75-.75-.75h-2.25v.75a.75.75 0 01-1.5 0v-.75h-11.5v.75a.75.75 0 01-1.5 0v-.75zm13.5 3.75h-15v10.5c0 .414.336.75.75.75h13.5c.414 0 .75-.336.75-.75V9.5z" clip-rule="evenodd" />
+                            </svg>
+                            <p class="menu-font ml-1 my-auto {{ request()->is('fullcalender*') ? 'active-menu' : '' }}">
+                                Calendar
+                            </p>
+                        </a>
 
 
 

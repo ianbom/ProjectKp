@@ -94,6 +94,13 @@ class TaskController extends Controller
             'title' => $request->title,
             'description' => $request->description,
         ]);
+
+        $this->kirimWaTask($task->user->phone, "Pemberitahuan Task Baru.
+        To {$task->user->name}
+        Title {$task->title}
+        Description {$task->description}"
+    );
+
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $image) {
 
@@ -106,11 +113,7 @@ class TaskController extends Controller
                 ]);
             }
         }
-        $this->kirimWaTask($task->user->phone, "Pemberitahuan Task Baru.
-        To {$task->user->name}
-        Title {$task->title}
-        Description {$task->description}"
-    );
+
         return redirect()->route('task.index')->with('success', 'Task created successfully');
     } catch (\Throwable $th) {
         return response()->json(['error', $th->getMessage()]);
