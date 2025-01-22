@@ -34,8 +34,8 @@
 
                 <!-- Task ID (No style change, keeping it functional) -->
                 <div class="form-section mb-5">
-                    <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Task ID</h6>
-                    <input type="text" class="form-control shadow-sm" id="id_task" name="id_task" value="{{ $task->id_task }}" readonly
+                    <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Project </h6>
+                    <input type="text" class="form-control shadow-sm" id="id_task" name="id_task" value="{{ $task->projects->name }}" readonly
                         style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;">
                 </div>
 

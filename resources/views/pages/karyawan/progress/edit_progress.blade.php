@@ -43,7 +43,6 @@
                         style="border: 1px solid #0B20E9; border-radius: 7px;">
                         <option value="On-Going" {{ $progress->status === 'On-Going' ? 'selected' : '' }}>On-Going</option>
                         <option value="Completed" {{ $progress->status === 'Completed' ? 'selected' : '' }}>Completed</option>
-                        <option value="On-Check" {{ $progress->status === 'On-Check' ? 'selected' : '' }}>On-Check</option>
                     </select>
                 </div>
 

@@ -52,7 +52,7 @@
                             style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
                             value="{{ $item->phone }}" maxlength="12" pattern="\d*" required>
                     </div>
-                  
+
                 </div>
 
                 <!-- Detail Keamanan -->
@@ -64,19 +64,22 @@
                             <input type="password" name="password" id="password" autocomplete="new-password"
                                 class="form-control shadow-sm"
                                 style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; padding-right: 35px; background-color: #f5f8fd;"
-                               value="{{ $item->password }}" required
-
-                                title="Password harus mengandung minimal 8 karakter, termasuk huruf besar dan angka">
+                                value="{{ $item->password }}" required
+                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                title="Kata sandi harus memiliki minimal 8 karakter, kombinasi huruf besar, huruf kecil, dan angka">
                             <!-- Ikon mata -->
-                            <span class="toggle-password" onclick="togglePasswordVisibility()"
+                            <span class="toggle-password"
+                                onclick="togglePasswordVisibility()"
                                 style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
-                                <i id="eyeIcon" class="fa fa-eye-slash" style="color: #0B20E9;"></i>
+                                <i id="eyeIcon" class="fas fa-eye-slash" style="color: #0B20E9;"></i>
                             </span>
                         </div>
-                        <small class="form-text text-muted" style="margin-top: 5px;">Password harus mengandung minimal 8 karakter, termasuk huruf besar dan angka</small>
-
+                        <small class="form-text text-muted" style="margin-top: 5px;">
+                            Password harus mengandung minimal 8 karakter, termasuk huruf besar dan angka
+                        </small>
                     </div>
                 </div>
+
 
                 <!-- Gambar Profil -->
                 <div class="form-section mb-5">
@@ -143,18 +146,26 @@
 
 <script>
     function togglePasswordVisibility() {
-        const passwordInput = document.getElementById("password");
-        const eyeIcon = document.getElementById("eyeIcon");
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            eyeIcon.classList.remove("fa-eye-slash");
-            eyeIcon.classList.add("fa-eye");
-        } else {
-            passwordInput.type = "password";
-            eyeIcon.classList.remove("fa-eye");
-            eyeIcon.classList.add("fa-eye-slash");
-        }
+    const passwordInput = document.getElementById("password");
+    const eyeIcon = document.getElementById("eyeIcon");
+
+    // Toggle antara "password" dan "text" untuk input password
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
     }
+}
+
+</script>
+<script>
+
+
+
     function validateFile() {
         const fileInput = document.getElementById('photo');
         const file = fileInput.files[0];

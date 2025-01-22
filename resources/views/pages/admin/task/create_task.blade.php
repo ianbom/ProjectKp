@@ -48,7 +48,7 @@
                                 style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;">
                                 <option value="">Tidak Ada</option>
                                 @foreach($projects as $project)
-                                    <option value="{{ $project->id }}">{{ $project->id }}-{{ $project->name }}</option>
+                                    <option value="{{ $project->id }}">{{ $project->id }} - {{ $project->name }} - {{ $project->client->name }}</option>
                                 @endforeach
                             </select>
                         </div>

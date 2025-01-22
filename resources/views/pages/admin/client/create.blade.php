@@ -75,7 +75,9 @@
                                     <input type="password" name="password" id="password" autocomplete="new-password"
                                         class="form-control shadow-sm"
                                         style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; padding-right: 35px; background-color: #f5f8fd;"
-                                        placeholder="Minimal 8 karakter, kombinasi huruf & angka" required
+                                        placeholder="Minimal 8 karakter, kombinasi huruf besar, kecil & angka"
+                                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                                        title="Kata sandi harus memiliki minimal 8 karakter, kombinasi huruf besar, huruf kecil, dan angka" required
                                         >
                                     <!-- Ikon mata -->
                                     <span class="toggle-password" onclick="togglePasswordVisibility()"
@@ -187,7 +189,7 @@
     document.getElementById('phone').addEventListener('input', function (e) {
     const value = e.target.value;
     if (value.length > 12) {
-        e.target.value = value.slice(0, 12); 
+        e.target.value = value.slice(0, 12);
     }
 });
 
