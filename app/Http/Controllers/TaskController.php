@@ -144,6 +144,7 @@ class TaskController extends Controller
         ]);
 
         $task = Task::findOrFail($id_task);
+        // $oldTaskData = $task->getOriginal();
 
         $task->update([
             'id_projects' => $request->id_projects,
@@ -151,6 +152,15 @@ class TaskController extends Controller
             'title' => $request->title,
             'description' => $request->description,
         ]);
+
+        // activity()
+        // ->performedOn($task)
+        // ->causedBy(auth()->user())
+        // ->withProperties([
+        //     'old' => $oldTaskData,
+        //     'new' => $task->getChanges(),
+        // ])
+        // ->log('Task updated');
 
 
         if ($request->hasFile('image')) {

@@ -8,10 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Laravelista\Comments\Commenter;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Commenter;
+    use HasApiTokens, HasFactory, Notifiable, Commenter, LogsActivity;
 
     /**
      * The attributes that are mass assignable.
@@ -53,4 +55,13 @@ class User extends Authenticatable
     public function progressTask(){
         return $this->hasMany(ProgressTask::class, 'id', 'id');
     }
+
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+                ->logOnly([   'name','email','password','roles','phone'])
+                ->setDescriptionForEvent(fn(string $eventName) => "This model has been {$eventName}")
+                ->useLogName('Users');
+    }
+
 }

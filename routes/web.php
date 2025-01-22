@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\AllProjectController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\TaskController;
 use App\Models\Project;
 use App\Models\Tutorial;
@@ -70,6 +71,12 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->namespace('Admin')->group
     Route::prefix('projects')->group(function (){
         Route::get('/all', [AllProjectController::class, 'index'])->name('admin.projects.index');
         Route::get('/data', [AllProjectController::class, 'dataProjects'])->name('projects.data');
+
+    });
+    Route::prefix('log')->group(function (){
+        Route::get('/', [LogController::class, 'index'])->name('log.index');
+        Route::get('/detail/{log}', [LogController::class, 'show'])->name('log.show');
+
 
     });
 
