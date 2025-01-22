@@ -77,6 +77,16 @@
                         </div>
                     </div>
 
+                    <div class="form-section mb-5">
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Status</h6>
+                        <select name="status" class="form-control shadow-sm" style="border: 1px solid #0B20E9; border-radius: 7px;">
+                            <option value="On-Going" {{ old('status', $task->status) == 'On-Going' ? 'selected' : '' }}>On-Going</option>
+                            <option value="Completed" {{ old('status', $task->status) == 'Completed' ? 'selected' : '' }}>Completed</option>
+                            <option value="On-Check" {{ old('status', $task->status) == 'On-Check' ? 'selected' : '' }}>On-Check</option>
+                        </select>
+                    </div>
+
+
                     <!-- Description Input -->
                     <div class="form-section mb-5">
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Deskripsi Tugas</h6>
@@ -95,7 +105,7 @@
                             <small class="text-muted">Anda dapat mengunggah beberapa gambar. Format yang diperbolehkan: jpeg, png, jpg, pdf.</small>
                         </div>
                     </div>
-                    
+
 
                     <!-- Action Buttons -->
                     <div class="text-right mt-5">

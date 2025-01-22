@@ -289,6 +289,15 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="card1 shadow-sm border-0">
+                        <div class="card-body">
+                            <h6 style="color: #0B20E9; font-weight: bold;">Status Task</h6>
+                            <p>{{ $task->status }}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <h6 class="mt-5 mb-4" style="color: #0B20E9; font-weight:600;">Progress Task</h6>            <div class="row" >
@@ -344,6 +353,14 @@
                                         $progress->id_progress_task) }}">Detail</a></li>
                                         <li><a class="dropdown-item" href="{{ route('karyawan.progress.edit',
                                         $progress->id_progress_task) }}">Edit</a></li>
+                                        <li>
+                                            <form action="{{ route('task.delete.progress', $progress->id_progress_task) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="dropdown-item"> Delete</button>
+
+                                            </form>
+                                        </li>
                                     </ul>
                                 </div>
                             </td>

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id('id_task');
             $table->foreignId('id_projects')->nullable()->constrained('projects', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('id')->constrained('users', 'id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->enum('status', ['On-Going', 'On-Check', 'Completed']);
             $table->string('title');
             $table->text('description');
             $table->timestamps();

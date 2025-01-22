@@ -99,6 +99,7 @@ Route::prefix('karyawan')->group(function (){
     Route::put('/update/progress/{id}', [KaryawanController::class, 'updateProgress'])->name('karyawan.progress.update');
     Route::delete('/delete/image-progress/{id}', [KaryawanController::class, 'deleteImage'])->name('karyawan.imageProgress.delete');
     Route::get('detail/progress/{id}', [TaskController::class, 'detailProgress'])->name('task.detail.progress');
+    Route::delete('delete/progress/{progress}', [TaskController::class, 'deleteProgress'])->name('task.delete.progress');
 
 });
 

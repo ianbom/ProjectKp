@@ -54,6 +54,13 @@
                         </div>
                     </div>
 
+                    <div class="form-section mb-5">
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Status</h6>
+                        <select name="status" class="form-control shadow-sm" style="border: 1px solid #0B20E9; border-radius: 7px;">
+                            <option value="On-Going" selected>On-Going</option>
+                        </select>
+                    </div>
+
                     <div class="form-group mb-4">
                         <label for="id" style="font-weight: 600;">Pilih Pengguna</label>
                         <select name="id" id="id" class="form-control shadow-sm select2"

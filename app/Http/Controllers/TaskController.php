@@ -85,6 +85,7 @@ class TaskController extends Controller
             'id_projects' => 'nullable',
             'id' => 'required',
             'title' => 'required|string',
+            'status' => 'required',
             'description' => 'required|string',
             'image' => 'nullable|array',
             'image.*' => 'file|mimes:jpeg,png,jpg,pdf'
@@ -139,6 +140,7 @@ class TaskController extends Controller
             'id_projects' => 'nullable',
             'id' => 'required',
             'title' => 'required|string',
+            'status' => 'required',
             'description' => 'required|string',
             'image' => 'sometimes|array',
             'image.*' => 'file|mimes:jpeg,png,jpg,pdf'
@@ -149,6 +151,7 @@ class TaskController extends Controller
 
         $task->update([
             'id_projects' => $request->id_projects,
+            'status' => $request->status,
             'id' => $request->id,
             'title' => $request->title,
             'description' => $request->description,
@@ -223,6 +226,12 @@ class TaskController extends Controller
 
         return redirect()->back()->with('success', 'Success update progress task');
     }
+
+    public function deleteProgress(ProgressTask $progress){
+        $progress->delete();
+        return redirect()->back()->with('success', 'Progress deleted successfully');
+    }
+
 
     private function kirimWaTask($target, $message,){
         try {

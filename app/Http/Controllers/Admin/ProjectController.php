@@ -95,6 +95,7 @@ public function index(Client $client)
         $project = Project::create($data);
 
         Event::create([
+            'id_project' => $project->id,
             'title' => $project->name,
             'start' => $project->created_at,
             'end' => $project->deadline
@@ -159,6 +160,12 @@ public function index(Client $client)
 
         $item->update($data);
 
+        $event = Event::where('id_project', $project->id)->first();
+        $event->update([
+            'title' => $project->name,
+            'end' => $project->deadline
+        ]);
+
 
         if ($item->status == 'Completed') {
             $this->kirimWaClient($item->client->phone, 'Project anda telah selesai, segera kunjungi website anda
@@ -179,6 +186,9 @@ public function index(Client $client)
     public function destroy(Project $project)
     {
         File::delete(public_path('storage/' . $project->photo));
+
+        $event = Event::where('id_project', $project->id)->first();
+        $event->delete();
         $project->delete();
         return redirect()->back()->with('success', 'Project deleted successfully');
     }

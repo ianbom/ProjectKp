@@ -94,6 +94,7 @@
                                 <th>Project</th>
                                 <th>Title</th>
                                 <th>Description</th>
+                                <th>Status</th>
                                 <th>Created At</th>
                                 <th>Action</th>
                             </tr>
@@ -105,6 +106,7 @@
                                     <td>{{ $item->projects->name ?? 'No Project Assigned' }}</td>
                                     <td>{{ $item->title }}</td>
                                     <td>{{ $item->description }}</td>
+                                    <td>{{ $item->status }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->format('j F Y') }}</td>
                                     <td>
                                         <a href="{{ route('karyawan.task.detail', $item->id_task) }}" class="btn btn-success">Detail</a>
