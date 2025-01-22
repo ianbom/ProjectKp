@@ -30,7 +30,7 @@
                         style="color: #4A4A4A; font-size: 14px; line-height: 3; border-left: 4px solid #0B20E9; padding-left: 15px;
                                 background-color: #FFFFFF; border-radius: 7px; box-shadow: 0 4px 7px rgba(0, 0, 0, 0.02);">
                         <p>
-                            Edit password dengan hati-hati. Pastikan kata sandi yang Anda masukkan aman dan sesuai dengan
+                            Ubah password dengan hati-hati. Pastikan kata sandi yang Anda masukkan aman dan sesuai dengan
                             kebijakan sistem.
                         </p>
                     </div>
@@ -42,14 +42,24 @@
                         @csrf
 
                         <!-- Password Section -->
-                        <div class="form-section mb-5">
-                            <h5 class="mb-3" style="color: #0B20E9; font-weight: bold;">Kata Sandi Baru</h5>
-                            <div class="form-group mb-4">
-                                <label for="password" style="font-weight: 600;">Edit Kata Sandi</label>
-                                <input type="password" name="password" id="password" class="form-control shadow-sm"
-                                    style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;" required>
+
+                        <div class="form-group mb-4 ">
+                            <label for="password" style="font-weight: 600;">Buat Kata Sandi Baru</label>
+                            <div style="position: relative;">
+                                <input type="password" name="password" id="password" autocomplete="new-password"
+                                    class="form-control shadow-sm"
+                                    style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; padding-right: 35px; background-color: #f5f8fd;"
+                                    placeholder="Minimal 8 karakter, kombinasi huruf & angka" required
+                                    >
+                                <!-- Ikon mata -->
+                                <span class="toggle-password" onclick="togglePasswordVisibility()"
+                                    style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                    <i id="eyeIcon" class="fa fa-eye-slash" style="color: #0B20E9;"></i>
+                                </span>
                             </div>
+                            <small class="form-text text-muted" style="margin-top: 5px;">Kata Sandi minimal 8 karakter, kombinasi huruf & angka</small>
                         </div>
+
 
                         <!-- Save Button -->
                         <div class="text-right mt-5">
@@ -123,5 +133,19 @@
             transition: all 0.3s ease;
         }
     </style>
-
+<script>
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById("password");
+        const eyeIcon = document.getElementById("eyeIcon");
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        } else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        }
+    }
+   </script>
 @endsection

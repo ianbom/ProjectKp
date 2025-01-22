@@ -118,10 +118,21 @@
         }
     </style>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card shadow border-0 p-3">
-                <div class="card-body">
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow border-0 p-3">
+            @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+            <div class="card-body">
 
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered" id="projects-table">
@@ -160,6 +171,7 @@ $(document).ready(function() {
         processing: true,
         serverSide: true,
         ajax: "{{ route('projects.data') }}",
+        order: [[0, 'desc']], 
         columns: [
             { data: 'id', name: 'id' },
             { data: 'name', name: 'name' },

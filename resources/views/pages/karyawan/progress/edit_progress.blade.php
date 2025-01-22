@@ -55,14 +55,14 @@
                 </div> --}}
 
                 <!-- Upload Gambar/PDF -->
-                <div class="form-section mb-5">
-                    <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Upload File</h6>
-                    <input type="file" name="image[]" id="image" class="form-control shadow-sm mb-3"
-                           style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd; width: 100%; box-sizing: border-box;"
-                           accept=".jpg, .jpeg, .png, .pdf" multiple>
-                    <small class="form-text text-muted" style="margin-top: 5px;">Format yang didukung: JPG, PNG, PDF. Anda dapat mengunggah beberapa file.</small>
-                </div>
 
+                <div class="form-group mb-4">
+                    <label for="image" style="font-weight: 600;">Upload Gambar</label>
+                    <input type="file" name="image[]" id="image" class="form-control shadow-sm"
+                        style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" multiple
+                        accept="image/jpeg,image/png,application/pdf" multiple>
+                    <small class="form-text text-muted">Anda bisa menambahkan banyak File. Format yang didukung: JPG, PNG, PDF. Setiap File Maks 3 MB </small>
+                </div>
 
 
                 <!-- Tombol -->
@@ -140,4 +140,32 @@
         border-radius: 2px;
     }
 </style>
+<script>
+    document.getElementById('image').addEventListener('change', function(event) {
+        const files = event.target.files;
+        const maxSize = 3 * 1024 * 1024; // 3 MB
+        const allowedExtensions = ['jpg', 'jpeg', 'png', 'pdf'];
+        let isValid = true;
+
+        for (let file of files) {
+            const fileExtension = file.name.split('.').pop().toLowerCase();
+            if (!allowedExtensions.includes(fileExtension)) {
+                alert(`Format file ${file.name} tidak didukung. Hanya JPG, PNG, dan PDF yang diizinkan.`);
+                isValid = false;
+            }
+
+            if (file.size > maxSize) {
+                alert(`Ukuran file ${file.name} melebihi 3 MB.`);
+                isValid = false;
+            }
+        }
+
+        if (!isValid) {
+            event.target.value = ''; // Reset input file jika ada file tidak valid
+        }
+    });
+    </script>
+
 @endsection
+
+

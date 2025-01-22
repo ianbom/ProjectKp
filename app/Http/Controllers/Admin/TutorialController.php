@@ -243,6 +243,6 @@ class TutorialController extends Controller
 
         $item->delete();
         // $projectdelete->delete();
-        return redirect()->route('tutorial.index');
+        return redirect()->route('tutorial.index')->with('success', 'Video Tutorial deleted successfully');
     }
 }
