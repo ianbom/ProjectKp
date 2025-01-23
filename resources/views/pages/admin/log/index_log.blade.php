@@ -143,7 +143,6 @@ use Carbon\Carbon;
                                 <tr>
                                     <th class="text-center">No</th>
                                     <th class="text-center">Log Name</th>
-                                    <th class="text-center">Description</th>
                                     <th class="text-center">Event</th>
                                     <th class="text-center">Subject Type</th>
                                     <th class="text-center">Causer Name</th>
@@ -157,7 +156,6 @@ use Carbon\Carbon;
                                         <td>{{ $index + 1}}</td>
 
                                         <td>{{ $entry->log_name }}</td>
-                                        <td>{{ $entry->description }}</td>
                                         <td class="text-center"
                                         style="background-color:
                                         @if($entry->event == 'created')
@@ -170,9 +168,23 @@ use Carbon\Carbon;
                                             rgba(0, 123, 255, 0.2); /* Blue with transparency for 'viewed' */
                                         @else
                                             rgba(248, 249, 250, 0.2); /* Default transparent gray */
-                                        @endif;">
+                                        @endif;
+                                        color:
+                                        @if($entry->event == 'created')
+                                            rgb(40, 167, 69); /* Solid green for 'created' */
+                                        @elseif($entry->event == 'updated')
+                                            rgb(255, 193, 7); /* Solid yellow for 'updated' */
+                                        @elseif($entry->event == 'deleted')
+                                            rgb(220, 53, 69); /* Solid red for 'deleted' */
+                                        @elseif($entry->event == 'viewed')
+                                            rgb(0, 123, 255); /* Solid blue for 'viewed' */
+                                        @else
+                                            rgb(108, 117, 125); /* Solid gray for default */
+                                        @endif;
+                                        font-weight: bold;">
                                         {{ $entry->event }}
                                     </td>
+
                                         <td>{{ $entry->subject_type }}</td>
                                         <td>{{ $entry->user_name ?? 'System' }}</td>
                                         <td>{{  Carbon::parse($entry->created_at)->translatedFormat('d F Y') }}</td>

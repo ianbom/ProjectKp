@@ -140,8 +140,27 @@
                 <div class="col-md-6 mb-4">
                     <div class="card shadow-sm border-0" style="border-radius: 10px; background-color: #FFFFFF;">
                         <div class="card-body">
-                            <h6 style="color: #0B20E9; font-weight: bold;">Notes</h6>
-                            <p>{{ $task->projects->notes }}</p>
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <h6 style="color: #0B20E9; font-weight: bold;">Notes</h6>
+                                <!-- Icon Salin -->
+                                <button
+                                    onclick="copyToClipboard()"
+                                    style="
+                                        background: none;
+                                        border: none;
+                                        cursor: pointer;
+                                        padding: 5px;
+                                        border-radius: 4px;
+                                        transition: background-color 0.3s ease;"
+                                    title="Salin Teks"
+                                    onmouseover="this.style.backgroundColor = '#E8F0FE'"
+                                    onmouseout="this.style.backgroundColor = 'transparent'"
+                                    onmousedown="this.style.boxShadow = 'none'; this.style.outline = 'none'"
+                                    onmouseup="this.style.boxShadow = ''">
+                                    <i class="fas fa-copy" style="color: #0B20E9; font-size: 16px;"></i>
+                                </button>
+                            </div>
+                            <p id="notesText">{{ $task->projects->notes }}</p>
                         </div>
                     </div>
                 </div>
@@ -152,7 +171,7 @@
                         <div class="card-body">
                             <h6 style="color: #0B20E9; font-weight: bold;">Project Photo</h6>
                             @if($task->projects->photo)
-                               
+
                                 <a href="{{ Storage::url($task->projects->photo) }}" target="_blank" class="btn btn-outline-info btn-sm">Lihat Foto</a>
                             @else
                                 <p class="text-muted">Tidak ada foto untuk proyek ini.</p>
@@ -265,4 +284,17 @@
 
     </div>
 </div>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+    function copyToClipboard() {
+        // Dapatkan elemen teks
+        const notesText = document.getElementById('notesText').innerText;
+        // Salin teks ke clipboard
+        navigator.clipboard.writeText(notesText).then(() => {
+            alert('Teks berhasil disalin ke clipboard!');
+        }).catch((err) => {
+            console.error('Gagal menyalin teks: ', err);
+        });
+    }
+</script>
 @endsection
