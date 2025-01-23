@@ -61,7 +61,7 @@
 
                     <div class="form-group mb-4">
                         <label for="id" style="font-weight: 600;">Pilih Pengguna</label>
-                        <select name="user" class="js-example-basic-single select-2 form-control shadow-sm"
+                        <select name="id" class="js-example-basic-single form-control shadow-sm"
                             style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
                             <option value="">Pilih Pengguna</option>
                             @foreach($user as $u)
