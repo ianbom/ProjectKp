@@ -111,23 +111,39 @@
             <div class="col-md-6 mb-4">
                 <div class="card shadow-sm border-0">
                     <div class="card-body"
-                         style="background-color:
-                                @if($log->event == 'created')
-                                    rgba(40, 167, 69, 0.2); /* Green with transparency for 'created' */
-                                @elseif($log->event == 'updated')
-                                    rgba(255, 193, 7, 0.2); /* Yellow with transparency for 'updated' */
-                                @elseif($log->event == 'deleted')
-                                    rgba(220, 53, 69, 0.2); /* Red with transparency for 'deleted' */
-                                @elseif($log->event == 'viewed')
-                                    rgba(0, 123, 255, 0.2); /* Blue with transparency for 'viewed' */
-                                @else
-                                    rgba(248, 249, 250, 0.2); /* Default transparent gray */
-                                @endif;">
+                         style="
+                            background-color:
+                            @if($log->event == 'created')
+                                rgba(40, 167, 69, 0.2); /* Green with transparency for 'created' */
+                            @elseif($log->event == 'updated')
+                                rgba(255, 193, 7, 0.2); /* Yellow with transparency for 'updated' */
+                            @elseif($log->event == 'deleted')
+                                rgba(220, 53, 69, 0.2); /* Red with transparency for 'deleted' */
+                            @elseif($log->event == 'viewed')
+                                rgba(0, 123, 255, 0.2); /* Blue with transparency for 'viewed' */
+                            @else
+                                rgba(248, 249, 250, 0.2); /* Default transparent gray */
+                            @endif;
+                            color:
+                            @if($log->event == 'created')
+                                #28a745 !important; /* Solid green for 'created' */
+                            @elseif($log->event == 'updated')
+                                #ffc107 !important; /* Solid yellow for 'updated' */
+                            @elseif($log->event == 'deleted')
+                                #dc3545 !important; /* Solid red for 'deleted' */
+                            @elseif($log->event == 'viewed')
+                                #007bff !important; /* Solid blue for 'viewed' */
+                            @else
+                                #6c757d !important; /* Solid gray for default */
+                            @endif;
+                            font-weight: bold !important;">
                         <h6>Event</h6>
                         <p>{{ ucfirst($log->event) }}</p>
                     </div>
                 </div>
             </div>
+
+
 
 
             <div class="col-md-6 mb-4">
