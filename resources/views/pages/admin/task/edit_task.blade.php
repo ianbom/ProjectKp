@@ -42,7 +42,7 @@
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Detail Proyek</h6>
                         <div class="form-group mb-4">
                             <label for="id_projects" style="font-weight: 600;">Pilih Proyek</label>
-                            <select class="form-control shadow-sm" id="id_projects" name="id_projects" style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
+                            <select class="js-example-basic-single form-control shadow-sm" id="id_projects" name="id_projects" style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
                                 <option value="">Tidak Ada Proyek</option>
                                 @foreach($projects as $project)
                                     <option value="{{ $project->id }}" {{ $task->id_projects == $project->id ? 'selected' : '' }}>
@@ -73,7 +73,7 @@
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Informasi Pengguna</h6>
                         <div class="form-group mb-4">
                             <label for="id" style="font-weight: 600;">ID Pengguna</label>
-                            <select class="form-control shadow-sm" id="id" name="id" style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
+                            <select class="js-example-basic-single form-control shadow-sm" id="id" name="id" style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
                                 @foreach($user as $u)
                                     <option value="{{ $u->id }}" {{ $task->id == $u->id ? 'selected' : '' }}>
                                         {{ $u->name }}
@@ -216,6 +216,16 @@
         padding-top: 20px;
     }
 </style>
+@push('addon-script')
+<script>
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2({
+            allowClear: true
+        });
+    });
+</script>
+@endpush
+
 <script>
     document.getElementById('image').addEventListener('change', function(event) {
         const files = event.target.files;
