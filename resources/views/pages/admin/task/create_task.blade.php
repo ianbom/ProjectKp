@@ -51,7 +51,7 @@
                             </select>
                         </div>
                     </div> --}}
-                    <div class="form-section mb-5">
+                    <div class="form-section">
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Pilih Project (Opsional)</h6>
                         <div class="form-group mb-4">
                             <label for="id_projects" style="font-weight: 600;">Project</label>
