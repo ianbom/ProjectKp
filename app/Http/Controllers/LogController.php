@@ -13,7 +13,6 @@ class LogController extends Controller
         $log = DB::table('activity_log')
         ->leftJoin('users', 'activity_log.causer_id', '=', 'users.id')
         ->select('activity_log.*', 'users.name as user_name')
-        ->orderBy('activity_log.created_at', 'desc')
         ->get();
 
     return view('pages.admin.log.index_log', ['log' => $log]);
