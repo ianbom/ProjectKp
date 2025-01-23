@@ -93,7 +93,6 @@
                                 <th>ID Task</th>
                                 <th>Project</th>
                                 <th>Title</th>
-                                <th>Description</th>
                                 <th>Status</th>
                                 <th>Created At</th>
                                 <th>Action</th>
@@ -105,7 +104,6 @@
                                     <td>{{ $item->id_task }}</td>
                                     <td>{{ $item->projects->name ?? 'No Project Assigned' }}</td>
                                     <td>{{ $item->title }}</td>
-                                    <td>{{ $item->description }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>{{ \Carbon\Carbon::parse($item->created_at)->format('j F Y') }}</td>
                                     <td>

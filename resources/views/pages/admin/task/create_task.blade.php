@@ -38,11 +38,24 @@
 
                     <!-- Pilih Proyek -->
 
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Pilih Project (Opsional)</h6>
                         <div class="form-group mb-4">
-                            <label for="id" style="font-weight: 600;">Project</label>
+                            <label for="id_projects" style="font-weight: 600;">Project</label>
                             <select name="id" id="id_projects" class="js-example-basic-single1 select-2  form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;">
+                                <option value="">Tidak Ada</option>
+                                @foreach($projects as $project)
+                                <option value="{{ $project->id }}">{{ $project->id }} - {{ $project->name }} - {{ $project->client->name }}</option>
+                            @endforeach
+                            </select>
+                        </div>
+                    </div> --}}
+                    <div class="form-section mb-5">
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Pilih Project (Opsional)</h6>
+                        <div class="form-group mb-4">
+                            <label for="id_projects" style="font-weight: 600;">Project</label>
+                            <select name="id_projects" id="id_projects" class="js-example-basic-single1 form-control shadow-sm"
                                 style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;">
                                 <option value="">Tidak Ada</option>
                                 @foreach($projects as $project)
@@ -51,6 +64,7 @@
                             </select>
                         </div>
                     </div>
+
 
                     <div class="form-group mb-4">
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Status</h6>

@@ -139,7 +139,6 @@
                                     <th class="text-center">User</th>
                                     <th class="text-center">Title</th>
                                     <th class="text-center">Status</th>
-                                    <th class="text-center">Description</th>
                                     <th class="text-center">Created At</th>
                                     <th class="text-center">Updated At</th>
                                     <th class="text-center">Aksi</th>
@@ -175,7 +174,6 @@
             { data: 'user_name', name: 'user_name' },
             { data: 'title', name: 'title' },
             { data: 'status', name: 'status' },
-            { data: 'description', name: 'description' },
             { data: 'created_at', name: 'created_at' },
             { data: 'updated_at', name: 'updated_at' },
             { data: 'action', name: 'action', orderable: false, searchable: false }

@@ -60,10 +60,10 @@
                                 style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;">
                                 <option value="">Tidak Ada</option>
                                 @foreach($projects as $project)
-                                    <option value="{{ $project->id }}" {{ $task->id_projects == $project->id ? 'selected' : '' }}>
-                                        {{ $project->name }}
-                                    </option>
-                                @endforeach
+                                <option value="{{ $project->id }}" {{ $task->id_projects == $project->id ? 'selected' : '' }}>
+                                    {{ $project->name }}
+                                </option>
+                            @endforeach
                             </select>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                         <div class="form-group mb-4">
                             <label for="image" style="font-weight: 600;">Unggah Gambar Baru</label>
                             <input type="file" class="form-control shadow-sm" id="image" name="image[]" multiple style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;">
-                            <small class="text-muted">Anda dapat mengunggah beberapa gambar. Format yang diperbolehkan: jpeg, png, jpg, pdf.</small>
+                            <small class="form-text text-muted">Anda bisa menambahkan banyak File. Format yang didukung: JPG, PNG, PDF. Setiap File Maks 3 MB </small>
                         </div>
                     </div>
 
@@ -240,17 +240,23 @@
             event.target.value = ''; // Reset input file jika ada file tidak valid
         }
     });
-    $(document).ready(function() {
-        $('.js-example-basic-single1').select2({
-            placeholder: "Pilih Proyek",
-            allowClear: true
-        });
-    });
-    $(document).ready(function() {
-        $('.js-example-basic-single').select2({
-            placeholder: "Pilih Pengguna",
-            allowClear: true
-        });
-    });
     </script>
+    @push('addon-script')
+
+
+    <script>
+        $(document).ready(function() {
+            $('.js-example-basic-single').select2({
+                placeholder: "Pilih Pengguna",
+                allowClear: true
+            });
+
+        $(document).ready(function() {
+            $('.js-example-basic-single1').select2({
+                placeholder: "Pilih Proyek",
+                allowClear: true
+            });
+        }); });
+    </script>
+    @endpush
 @endsection

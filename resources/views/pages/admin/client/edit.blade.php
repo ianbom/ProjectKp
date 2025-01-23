@@ -90,7 +90,7 @@
                             class="form-control shadow-sm"
                             style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
                             accept=".jpg, .jpeg, .png"
-                            onchange="validateFile()" required>
+                            onchange="validateFile()" >
                         <small class="form-text text-muted" style="margin-top: 5px;">Format yang didukung: JPG, PNG. Pastikan ukuran gambar tidak lebih dari 2MB</small>
                         <img src="{{ Storage::url($item->photo) }}" height="250px" width="200"
                         style="object-fit: contain; margin-top: 15px;">
