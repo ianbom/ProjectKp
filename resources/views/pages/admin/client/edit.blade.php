@@ -37,20 +37,20 @@
                         <label for="name" style="font-weight: 600;">Nama Klien</label>
                         <input type="text" name="name" id="name" class="form-control shadow-sm"
                             style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
-                            value="{{ $item->name }}" required>
+                            value="{{ $item->name }}" placeholder="Masukkan nama lengkap klien" required>
                     </div>
                     <div class="form-group mb-4">
                         <label for="slug" style="font-weight: 600;">Slug</label>
                         <input type="text" name="slug" id="slug" class="form-control shadow-sm"
                             style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;"
-                            value="{{ $item->slug }}" required>
+                            value="{{ $item->slug }}" placeholder="Masukkan slug(kode unik)" required>
                     </div>
                     <div class="form-group mb-4">
                         <label for="phone" style="font-weight: 600;">Nomor</label>
                         <input type="text" name="phone" id="phone"
                             class="form-control shadow-sm"
                             style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
-                            value="{{ $item->phone }}" maxlength="12" pattern="\d*" required>
+                            value="{{ $item->phone }}" maxlength="12" pattern="\d*" placeholder="Masukkan nomor whatsaap" required>
                     </div>
 
                 </div>
@@ -64,7 +64,7 @@
                             <input type="password" name="password" id="password" autocomplete="new-password"
                                 class="form-control shadow-sm"
                                 style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; padding-right: 35px; background-color: #f5f8fd;"
-                                value="{{ $item->password }}" required
+                                value="{{ $item->password }}" placeholder="Masukkan kata sandi" required
                                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                 title="Kata sandi harus memiliki minimal 8 karakter, kombinasi huruf besar, huruf kecil, dan angka">
                             <!-- Ikon mata -->
@@ -86,10 +86,14 @@
                     <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Gambar Profil</h6>
                     <div class="form-group mb-4">
                         <label for="photo" style="font-weight: 600;">Foto Profil Klien</label>
-                        <input type="file" name="photo" id="photo" class="form-control shadow-sm"
-                            style="border: 1px solid #0B20E9; border-radius: 7px; transition: box-shadow 0.3s;">
+                        <input type="file" name="photo" id="photo"
+                            class="form-control shadow-sm"
+                            style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;"
+                            accept=".jpg, .jpeg, .png"
+                            onchange="validateFile()" required>
+                        <small class="form-text text-muted" style="margin-top: 5px;">Format yang didukung: JPG, PNG. Pastikan ukuran gambar tidak lebih dari 2MB</small>
                         <img src="{{ Storage::url($item->photo) }}" height="250px" width="200"
-                            style="object-fit: contain; margin-top: 15px;">
+                        style="object-fit: contain; margin-top: 15px;">
                     </div>
                 </div>
 
@@ -146,52 +150,48 @@
 
 <script>
     function togglePasswordVisibility() {
-    const passwordInput = document.getElementById("password");
-    const eyeIcon = document.getElementById("eyeIcon");
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        }
+    }
 
-    // Toggle antara "password" dan "text" untuk input password
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        eyeIcon.classList.remove("fa-eye-slash");
-        eyeIcon.classList.add("fa-eye");
-    } else {
-        passwordInput.type = "password";
-        eyeIcon.classList.remove("fa-eye");
-        eyeIcon.classList.add("fa-eye-slash");
+function validateFile() {
+    const fileInput = document.getElementById('photo');
+    const file = fileInput.files[0];
+
+    if (file) {
+        const allowedExtensions = ['image/jpeg', 'image/png'];
+        const maxSize = 2 * 1024 * 1024; // 2MB in bytes
+
+        // Validasi format file
+        if (!allowedExtensions.includes(file.type)) {
+            alert('Format file tidak didukung. Harap unggah file dalam format JPG atau PNG.');
+            fileInput.value = ''; // Reset input file
+            return;
+        }
+
+        // Validasi ukuran file
+        if (file.size > maxSize) {
+            alert('Ukuran file terlalu besar. Pastikan ukuran gambar tidak lebih dari 2MB.');
+            fileInput.value = ''; // Reset input file
+        }
     }
 }
+document.getElementById('phone').addEventListener('input', function (e) {
+const value = e.target.value;
+if (value.length > 12) {
+    e.target.value = value.slice(0, 12);
+}
+});
 
 </script>
-<script>
 
-
-
-    function validateFile() {
-        const fileInput = document.getElementById('photo');
-        const file = fileInput.files[0];
-
-        if (file) {
-            const allowedExtensions = ['image/jpeg', 'image/png'];
-            const maxSize = 2 * 1024 * 1024; // 2MB in bytes
-
-            // Validasi format file
-            if (!allowedExtensions.includes(file.type)) {
-                alert('Format file tidak didukung. Harap unggah file dalam format JPG atau PNG.');
-                fileInput.value = ''; // Reset input file
-                return;
-            }
-
-            // Validasi ukuran file
-            if (file.size > maxSize) {
-                alert('Ukuran file terlalu besar. Pastikan ukuran gambar tidak lebih dari 2MB.');
-                fileInput.value = ''; // Reset input file
-            }
-        }
-        }
-        document.getElementById('phone').addEventListener('input', function (e) {
-    const value = e.target.value;
-    if (value.length > 12) {
-        e.target.value = value.slice(0, 12);
-    }
-</script>
 @endsection

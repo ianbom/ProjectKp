@@ -72,22 +72,21 @@
             background: rgba(255, 255, 255, 0.2) !important;
             border: 2px solid rgba(255, 255, 255, 0.3) !important;
             color: white !important;
-            padding: 8px 15px !important;
             text-transform: capitalize !important;
             transition: all 0.3s ease !important;
             box-shadow: none !important;
         }
 
         .fc-toolbar button:hover {
-            background: rgba(255, 255, 255, 0.3) !important;
-            border-color: rgba(255, 255, 255, 0.4) !important;
+            background: rgba(82, 98, 220, 0.3) !important;
+            border-color: rgba(140, 140, 224, 0.4) !important;
             transform: translateY(-1px);
         }
 
         /* Calendar Grid */
         .fc-day-header {
             background-color: #f8f9fa !important;
-            color: #2c3e50 !important;
+            color: #1d24e8 !important;
             padding: 12px 0 !important;
             font-weight: 600 !important;
             text-transform: uppercase !important;

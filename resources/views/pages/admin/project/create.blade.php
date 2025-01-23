@@ -79,10 +79,13 @@
                 <!-- Notes -->
                 <div class="form-section mb-5">
                     <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Notes</h6>
-                    <input type="text" id="notes" name="notes" class="form-control shadow-sm" required style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" placeholder="Bisa memasukkan link asset/keterangan tambahan (pilih salah satu saja)">
+                    <input type="text" id="notes" name="notes" class="form-control shadow-sm" required style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" placeholder="Masukkan keterangan tambahan">
                     <div id="link-preview" class="mt-2" style="display: none;">
                         <a id="link-preview-anchor" href="#" target="_blank" style="color: #0B20E9; font-style: italic; font-size: 0.875rem;">Klik di sini untuk membuka tautan</a>
                     </div>
+                    <small class="form-text text-muted" style="margin-top: 5px;">
+                        Bisa memasukkan link asset/keterangan tambahan (pilih salah satu saja)
+                    </small>
                 </div>
 
                 <!-- Img Project -->

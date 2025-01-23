@@ -114,9 +114,6 @@
                             <svg class="menu-icon menu-icon-normal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.89 2 1.99 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM12 17h-2v-2h2v2zm4-4H8V7h8v6z"/>
                               </svg>
-
-
-
                             <p class="menu-font ml-1 my-auto {{ request()->is('admin/projects*') ? 'active-menu' : '' }}">
                                 All Project
                             </p>
@@ -131,6 +128,15 @@
                                 Calendar
                             </p>
                         </a>
+                        <a href="{{ route('log.index') }}"
+                        class="dashboard-nav-item {{ request()->is('admin/log*') ? 'active-item' : '' }}">
+                        <svg class="menu-icon menu-icon-history" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                            <path fill-rule="evenodd" d="M5 3.75A2.25 2.25 0 0 0 2.75 6v12A2.25 2.25 0 0 0 5 20.25h14A2.25 2.25 0 0 0 21.25 18V6A2.25 2.25 0 0 0 19 3.75H5zm-.75 2.25c0-.414.336-.75.75-.75h14c.414 0 .75.336.75.75v1H4.25V6zm0 3.75v8.25c0 .414.336.75.75.75h14a.75.75 0 0 0 .75-.75V9.75H4.25zm6.25 1.5a.75.75 0 0 1 1.5 0v3.75h2.25a.75.75 0 0 1 0 1.5H11a.75.75 0 0 1-.75-.75v-4.5z" clip-rule="evenodd" />
+                          </svg>
+                        <p class="menu-font ml-1 my-auto {{ request()->is('admin/log*') ? 'active-menu' : '' }}">
+                            Log
+                        </p>
+                    </a>
 
 
 

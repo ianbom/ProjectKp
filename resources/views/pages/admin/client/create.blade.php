@@ -75,7 +75,7 @@
                                     <input type="password" name="password" id="password" autocomplete="new-password"
                                         class="form-control shadow-sm"
                                         style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; padding-right: 35px; background-color: #f5f8fd;"
-                                        placeholder="Minimal 8 karakter, kombinasi huruf besar, kecil & angka"
+                                        placeholder="Masukkan kata sandi"
                                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                         title="Kata sandi harus memiliki minimal 8 karakter, kombinasi huruf besar, huruf kecil, dan angka" required
                                         >
@@ -85,6 +85,9 @@
                                         <i id="eyeIcon" class="fa fa-eye-slash" style="color: #0B20E9;"></i>
                                     </span>
                                 </div>
+                                <small class="form-text text-muted" style="margin-top: 5px;">
+                                    Password harus mengandung minimal 8 karakter, termasuk huruf besar dan angka
+                                </small>
                             </div>
                         </div>
 

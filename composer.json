@@ -15,8 +15,8 @@
         "laravel/tinker": "^2.7",
         "laravel/ui": "^4.2",
         "laravelista/comments": "*",
-        "spatie/laravel-activitylog": "^4.9",
-        "yajra/laravel-datatables-oracle": "^10.0"
+        "spatie/laravel-activitylog": "*",
+        "yajra/laravel-datatables-oracle": "^10.11"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

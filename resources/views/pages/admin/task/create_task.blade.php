@@ -6,7 +6,6 @@
 @section('content')
 
 
-
 <div class="row justify-content-center">
     <div class="col-md-10">
         @if ($errors->any())
@@ -39,11 +38,11 @@
 
                     <!-- Pilih Proyek -->
 
-                    <div class="form-section mb-5">
+                    <div class="form-group">
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Pilih Project (Opsional)</h6>
                         <div class="form-group mb-4">
-                            <label for="id_projects" style="font-weight: 600;">Project</label>
-                            <select name="id_projects" id="id_projects" class="js-example-basic-single form-control shadow-sm"
+                            <label for="id" style="font-weight: 600;">Project</label>
+                            <select name="id" id="id_projects" class="js-example-basic-single1 select-2  form-control shadow-sm"
                                 style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;">
                                 <option value="">Tidak Ada</option>
                                 @foreach($projects as $project)
@@ -53,7 +52,7 @@
                         </div>
                     </div>
 
-                    <div class="form-section mb-5">
+                    <div class="form-group mb-4">
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Status</h6>
                         <select name="status" class="form-control shadow-sm" style="border: 1px solid #0B20E9; border-radius: 7px;">
                             <option value="On-Going" selected>On-Going</option>
@@ -62,7 +61,7 @@
 
                     <div class="form-group mb-4">
                         <label for="id" style="font-weight: 600;">Pilih Pengguna</label>
-                        <select name="user" class="js-example-basic-single form-control shadow-sm"
+                        <select name="user" class="js-example-basic-single select-2 form-control shadow-sm"
                             style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
                             <option value="">Pilih Pengguna</option>
                             @foreach($user as $u)
@@ -148,7 +147,13 @@
             placeholder: "Pilih Pengguna",
             allowClear: true
         });
-    });
+
+    $(document).ready(function() {
+        $('.js-example-basic-single1').select2({
+            placeholder: "Pilih Proyek",
+            allowClear: true
+        });
+    }); });
 </script>
 @endpush
 

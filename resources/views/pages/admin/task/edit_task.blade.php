@@ -38,7 +38,7 @@
 
                     <div class="form" style="border: 1px solid #0B20E9; border-radius: 7px; padding: 20px; background-color: #ffffff;">
                         <!-- Project Selection -->
-                    <div class="form-section mb-5">
+                    {{-- <div class="form-section mb-5">
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Detail Proyek</h6>
                         <div class="form-group mb-4">
                             <label for="id_projects" style="font-weight: 600;">Pilih Proyek</label>
@@ -51,10 +51,25 @@
                                 @endforeach
                             </select>
                         </div>
+                    </div> --}}
+                    <div class="form-section">
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Detail Proyek</h6>
+                        <div class="form-group mb-4">
+                            <label for="id_projects" style="font-weight: 600;">Pilih Proyek</label>
+                            <select name="id_projects" id="id_projects" class="js-example-basic-single1 form-control shadow-sm"
+                                style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;">
+                                <option value="">Tidak Ada</option>
+                                @foreach($projects as $project)
+                                    <option value="{{ $project->id }}" {{ $task->id_projects == $project->id ? 'selected' : '' }}>
+                                        {{ $project->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
 
                     <!-- User ID Selection -->
-                    <div class="form-section mb-5">
+                    {{-- <div class="form-section mb-5">
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Informasi Pengguna</h6>
                         <div class="form-group mb-4">
                             <label for="id" style="font-weight: 600;">ID Pengguna</label>
@@ -66,8 +81,22 @@
                                 @endforeach
                             </select>
                         </div>
+                    </div> --}}
+                    <div class="form-section mb-5">
+                        <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Informasi Pengguna</h6>
+                        <div class="form-group mb-4">
+                            <label for="id" style="font-weight: 600;">ID Pengguna</label>
+                        <select name="user" class="js-example-basic-single form-control shadow-sm"
+                            style="border: 1px solid #0B20E9; border-radius: 7px; padding: 10px; background-color: #f5f8fd;" required>
+                            <option value="">Pilih Pengguna</option>
+                            @foreach($user as $u)
+                            <option value="{{ $u->id }}" {{ $task->id == $u->id ? 'selected' : '' }}>
+                                {{ $u->name }}
+                            </option>
+                             @endforeach
+                        </select>
                     </div>
-
+                </div>
                     <!-- Title Input -->
                     <div class="form-section mb-5">
                         <h6 class="mb-3" style="color: #0B20E9; font-weight: bold;">Judul Tugas</h6>
@@ -210,6 +239,18 @@
         if (!isValid) {
             event.target.value = ''; // Reset input file jika ada file tidak valid
         }
+    });
+    $(document).ready(function() {
+        $('.js-example-basic-single1').select2({
+            placeholder: "Pilih Proyek",
+            allowClear: true
+        });
+    });
+    $(document).ready(function() {
+        $('.js-example-basic-single').select2({
+            placeholder: "Pilih Pengguna",
+            allowClear: true
+        });
     });
     </script>
 @endsection
